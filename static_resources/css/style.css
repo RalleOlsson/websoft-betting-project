@@ -1,3 +1,10 @@
+:root {
+    --backgroundPrimary: #131417;
+    --backgroundSecondary: #1E1F26;
+    --primaryColor: #47CF73;
+    --borderColor: rgba(255, 255, 255, 0.8);
+}
+
 h1 {
     margin-left: auto;
     margin-right: auto;
@@ -6,63 +13,36 @@ h1 {
 
 body {
     max-width: 100%;
+    margin: 0px;
 }
 
 .grid-container {
     display: grid;
+    color: rgb(255, 255, 255, 1);
     grid-template-areas: 'header header header header header header' 'sidebar main main main main main' 'footer footer footer footer footer footer';
-    background-color: #2196F3;
+    background-color: var(--backgroundPrimary);
     width: 100%;
-    grid-gap: 10px;
 }
 
 .grid-item-header {
     grid-area: header;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .grid-item-sidebar {
     grid-area: sidebar;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: var(--backgroundSecondary);
 }
 
 .grid-item-main {
     grid-area: main;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .grid-item-footer {
     grid-area: footer;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    margin: 0px;
     font-size: 30px;
     text-align: center;
     width: 100%;
