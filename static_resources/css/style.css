@@ -1,9 +1,16 @@
+/*
+Global variables
+*/
+
 :root {
     --backgroundPrimary: #131417;
     --backgroundSecondary: #1E1F26;
     --primaryColor: #47CF73;
     --borderColor: rgba(255, 255, 255, 0.8);
 }
+
+
+/*testing purposes*/
 
 h1 {
     margin-left: auto;
@@ -18,18 +25,22 @@ body {
     height: 100%;
 }
 
-.grid-container2 {
+
+/*
+.grid-container {
     display: grid;
     color: rgb(255, 255, 255, 1);
     grid-template-areas: 'header header header header header header' 'sidebar main main main main main' 'footer footer footer footer footer footer';
     background-color: var(--backgroundPrimary);
     width: 100%;
 }
+*/
 
 .grid-container {
     display: grid;
     color: rgb(255, 255, 255, 1);
     grid-template-columns: 20% auto;
+    /* 1fr fills the remaning space */
     grid-template-rows: auto 1fr auto;
     background-color: var(--backgroundPrimary);
     min-height: 100%;
@@ -45,11 +56,11 @@ body {
 
 .grid-item-sidebar {
     grid-area: sidebar;
-    background-color: var(--backgroundSecondary);
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 2;
+    background-color: var(--backgroundSecondary);
 }
 
 .grid-item-main {
@@ -67,6 +78,11 @@ body {
     grid-row-start: 3;
     grid-row-end: 3;
 }
+
+
+/*
+A general grid item styling that should affect all 4 grid items
+*/
 
 .grid-item {
     font-size: 30px;
