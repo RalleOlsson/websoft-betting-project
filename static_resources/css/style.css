@@ -90,8 +90,8 @@ Specific grid items
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    background-color: #0f0f13;
-    border-top: thin rgba(255, 255, 255, 0.8);
+    background-color: var(--backgroundSecondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     /*testing*/
     font-size: 18px;
 }
