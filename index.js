@@ -22,8 +22,6 @@ app.use("/home", routeHome);
 app.use("/api", routeApi);
 app.use("/login", routeLogin);
 
-
-
 app.listen(port, logStartUpDetailsToConsole);
 
 /**
