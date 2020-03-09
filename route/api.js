@@ -28,76 +28,69 @@ router.get('/', (req, res) => {
 
 router.get('/matches', (req, res) => {
 
-    if ("matchId" in req.query) {
+    con.query("SELECT * FROM competitionMatch", function(err, result) {
 
-        var matchId = req.query.matchId;
+        if (err) throw err;
 
-        var finalResult = null;
+        res.json(result);
+    });
 
-        con.query("SELECT * FROM competitionMatch WHERE matchId = " + matchId, function(err, result) {
-
-            if (err) throw err;
-
-            finalResult = result;
-        });
-
-        con.query("SELECT team.teamName FROM team_has_match, team WHERE competitionMatch_matchId = " + matchId + " and team_teamId = team.teamId", function(err, result) {
-
-            if (err) throw err;
-
-            if (typeof result[0] !== 'undefined') {
-
-                finalResult[1] = {
-                    teams: [
-                        result[0].teamName,
-                        result[1].teamName
-                    ]
-                };
-
-                res.json(finalResult);
-
-            } else {
-                res.json("No match with that id");
-            }
-
-
-        });
-    }
-    /** if no url query is found, return all*/
-    else {
-
-        con.query("SELECT * FROM competitionMatch", function(err, result) {
-
-            if (err) throw err;
-
-            res.json(result);
-        });
-    }
 });
+
+router.get('/matches/:matchId(*)', (req, res) => {
+    const { matchId } = req.params;
+
+    var finalResult = null;
+
+    con.query("SELECT * FROM competitionMatch WHERE matchId = " + matchId, function(err, result) {
+
+        if (err) throw err;
+
+        finalResult = result;
+    });
+
+    con.query("SELECT team.teamName FROM team_has_match, team WHERE competitionMatch_matchId = " + matchId + " and team_teamId = team.teamId", function(err, result) {
+
+        if (err) throw err;
+
+        if (typeof result[0] !== 'undefined') {
+
+            finalResult[1] = {
+                teams: [
+                    result[0].teamName,
+                    result[1].teamName
+                ]
+            };
+
+            res.json(finalResult);
+
+        } else {
+            res.json("No match with that id");
+        }
+
+
+    });
+})
 
 router.get('/bets', (req, res) => {
 
-    if ("betId" in req.query) {
+    con.query("SELECT * FROM bet", function(err, result) {
 
-        var betId = req.query.betId;
+        if (err) throw err;
 
-        con.query("SELECT * FROM bet WHERE betId = " + betId, function(err, result) {
+        res.json(result);
+    });
+});
 
-            if (err) throw err;
+router.get('/bets/:betId(*)', (req, res) => {
+    const { betId } = req.params;
 
-            res.json(result);
-        });
-    }
-    /** if no url query is found, return all*/
-    else {
-        con.query("SELECT * FROM bet", function(err, result) {
+    con.query("SELECT * FROM bet WHERE betId = " + betId, function(err, result) {
 
-            if (err) throw err;
+        if (err) throw err;
 
-            res.json(result);
-        });
-    }
-
+        res.json(result);
+    });
 });
 
 router.get('/teams', (req, res) => {
