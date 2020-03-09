@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
             console.log(myJson);
         });
 
-
     res.render("home", data);
 });
 
