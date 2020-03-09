@@ -12,6 +12,7 @@
     "dependencies": {
         "ejs": "^3.0.1",
         "express": "^4.17.1",
+        "hltv": "^2.19.2",
         "mysql": "^2.18.1",
         "node-fetch": "^2.6.0"
     },
