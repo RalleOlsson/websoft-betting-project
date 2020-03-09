@@ -15,6 +15,7 @@ var con = mysql.createConnection({
     database: "bet_webV2"
 });
 
+
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");

@@ -50,7 +50,6 @@ Needs to be above other grid items so it can be overriden
 */
 
 .grid-item {
-    font-size: 30px;
     width: 100%;
     text-align: center;
 }
@@ -62,10 +61,13 @@ Specific grid items
 
 .grid-item-header {
     grid-area: header;
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 1;
+    background-color: var(--backgroundSecondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
 }
 
 .grid-item-sidebar {
@@ -75,6 +77,8 @@ Specific grid items
     grid-row-start: 1;
     grid-row-end: 3;
     background-color: var(--backgroundSecondary);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
 }
 
 .grid-item-main {
@@ -103,5 +107,71 @@ Specific grid items
 h1 {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+}
+
+
+/*
+Changing colors of links, both wehn visited and before
+*/
+
+
+/* unvisited link */
+
+a:link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* visited link */
+
+a:visited {
+    color: green;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: hotpink;
+}
+
+
+/* selected link */
+
+a:active {
+    color: blue;
+}
+
+
+/* 
+
+Tabs for header 
+
+*/
+
+.tabLinks {
+    overflow: hidden;
+    font-size: 0px;
+}
+
+.tabLink {
+    background-color: var(--backgroundSecondary);
+    color: var(--textColor);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+tabLink button.active {
+    background-color: var(--primaryColor);
+}
+
+.tabcontent {
+    display: none;
+    padding: 50px;
     text-align: center;
 }
