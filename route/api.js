@@ -20,6 +20,14 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
+function findWithAttr(array, attr, value) {
+    for (var i = 0; i < array.length; i += 1) {
+        if (array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 router.get('/matches/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
@@ -32,7 +40,25 @@ router.get('/matches/:matchId(*)', (req, res) => {
 router.get('/matches', (req, res) => {
 
     HLTV.getMatches().then((response) => {
-        res.json(response);
+        var eventList = [];
+
+        for (var i = 0; i < response.length; i++) {
+            var event = {};
+            // if the event doesnt exist
+            if (findWithAttr(eventList, 'eventName', response[i].event.name) == -1) {
+                event.eventName = response[i].event.name;
+                event.matches = [];
+                event.matches.push(response[i]);
+                eventList.push(event);
+            }
+            // find index of the existing event
+            else {
+                var index = findWithAttr(eventList, 'eventName', response[i].event.name);
+                eventList[index].matches.push(response[i]);
+            }
+        }
+
+        res.json(eventList);
     });
 });
 
@@ -70,6 +96,12 @@ router.get('/bets', (req, res) => {
         if (err) throw err;
 
         res.json(result);
+    });
+});
+
+router.get('/events', (req, res) => {
+    HLTV.getEvents().then(response => {
+        res.json(response);
     });
 });
 
