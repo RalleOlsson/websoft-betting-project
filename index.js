@@ -11,12 +11,15 @@ const middleware = require("./middleware/index.js");
 const routeHome = require("./route/home.js");
 const routeLogin = require("./route/login.js");
 const routeIndex = require("./route/index.js");
+const routeApi = require("./route/api.js");
+
 app.set("view engine", "ejs");
 
 app.use(middleware.logIncomingToConsole);
 app.use(express.static(path.join(__dirname, "static_resources")));
 app.use("/", routeIndex);
 app.use("/home", routeHome);
+app.use("/api", routeApi);
 app.use("/login", routeLogin);
 
 
