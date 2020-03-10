@@ -15,7 +15,6 @@ var con = mysql.createConnection({
     database: "bet_webV2"
 });
 
-
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -42,6 +41,7 @@ router.get('/matches', (req, res) => {
 
     HLTV.getMatches().then((response) => {
         var eventList = [];
+        var counter = 0;
 
         for (var i = 0; i < response.length; i++) {
             var event = {};
@@ -57,6 +57,7 @@ router.get('/matches', (req, res) => {
                 var index = findWithAttr(eventList, 'eventName', response[i].event.name);
                 eventList[index].matches.push(response[i]);
             }
+            counter++;
         }
 
         res.json(eventList);

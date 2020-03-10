@@ -166,7 +166,7 @@ Tabs for header
     width: 25%;
 }
 
-tabLink button.active {
+.tabLink:hover {
     background-color: var(--primaryColor);
 }
 
