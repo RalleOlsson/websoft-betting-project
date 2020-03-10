@@ -167,7 +167,7 @@ Tabs for header
 }
 
 .tabLink:hover {
-    background-color: var(--primaryColor);
+    background-color: hsla(0, 4%, 54%, 0.8);
 }
 
 .tabcontent {
