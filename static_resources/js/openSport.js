@@ -19,7 +19,7 @@ function openSport(evt, sportName, color) {
     document.getElementById(sportName).style.display = "block";
     if (evt.currentTarget.className === "tabLink") {
         evt.currentTarget.className += " active";
-        evt.style.backgroundColor = color;
+        evt.currentTarget.style.backgroundColor = color;
     }
 
 }
