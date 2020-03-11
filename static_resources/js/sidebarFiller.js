@@ -13,17 +13,24 @@ function fillSidebar(game) {
 
             break;
 
-    }
+        case 'LOL':
 
+            break;
+
+        case 'DOTA2':
+
+            break;
+
+    }
 }
 
 function addButtons(jsonData) {
     for (var i = 0; i < jsonData.length; i++) {
-        console.log("adding button");
-        var element = document.createElement("input");
 
+        var element = document.createElement("input");
+        console.log(jsonData[i].eventName);
         element.type = "button";
-        element.value = jsonData[i].name;
+        element.value = jsonData[i].eventName;
         element.onclick = function() {
             alert("vafan är detta ?");
         };
