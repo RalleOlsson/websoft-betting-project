@@ -1,29 +1,26 @@
-/*@import 'https://fonts.googleapis.com/css?family=Raleway';*/
-
-
-/*
+    /*@import 'https://fonts.googleapis.com/css?family=Raleway';*/
+    /*
 Global variables
 */
-
-:root {
-    --backgroundPrimary: #23272A;
-    --backgroundSecondary: #383B3D;
-    --primaryColor: #47CF73;
-    --secondaryColor: #420420;
-    --textColor: rgba(255, 255, 255, 0.8);
-    --borderColor: rgba(255, 255, 255, 0.2);
-}
-
-body {
-    max-width: 100%;
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    font-family: arial;
-}
-
-
-/*
+    
+     :root {
+        --backgroundPrimary: #23272A;
+        --backgroundSecondary: #383B3D;
+        --primaryColor: #47CF73;
+        --secondaryColor: #420420;
+        --textColor: rgba(255, 255, 255, 0.8);
+        --borderColor: rgba(255, 255, 255, 0.2);
+        --borderBottomColor: #cc13a4;
+    }
+    
+    body {
+        max-width: 100%;
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        font-family: arial;
+    }
+    /*
 .grid-container {
     display: grid;
     color: rgb(255, 255, 255, 1);
@@ -32,162 +29,179 @@ body {
     width: 100%;
 }
 */
-
-.grid-container {
-    display: grid;
-    color: var(--textColor);
-    grid-template-columns: 20% auto;
-    /* 1fr fills the remaning space */
-    grid-template-rows: auto 1fr auto;
-    background-color: var(--backgroundPrimary);
-    min-height: 100%;
-}
-
-
-/*
+    
+    .grid-container {
+        display: grid;
+        color: var(--textColor);
+        grid-template-columns: 20% auto;
+        /* 1fr fills the remaning space */
+        grid-template-rows: auto 1fr auto;
+        background-color: var(--backgroundPrimary);
+        min-height: 100%;
+    }
+    /*
 A general grid item styling that should affect all 4 grid items
 Needs to be above other grid items so it can be overriden
 */
-
-.grid-item {
-    width: 100%;
-    text-align: center;
-}
-
-
-/*
+    
+    .grid-item {
+        width: 100%;
+        text-align: center;
+    }
+    /*
 Specific grid items
 */
-
-.grid-item-header {
-    grid-area: header;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    background-color: var(--backgroundSecondary);
-    border-bottom: 1px solid var(--borderColor);
-    font-size: 20px;
-}
-
-.grid-item-sidebar {
-    grid-area: sidebar;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    background-color: var(--backgroundSecondary);
-    border-right: 1px solid var(--borderColor);
-    font-size: 20px;
-}
-
-.grid-item-main {
-    grid-area: main;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 2;
-}
-
-.grid-item-footer {
-    grid-area: footer;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    background-color: var(--backgroundSecondary);
-    border-top: 1px solid var(--borderColor);
-    /*testing*/
-    font-size: 18px;
-}
-
-
-/*testing purposes*/
-
-h1 {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-
-/*
+    
+    .grid-item-header {
+        grid-area: header;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        background-color: var(--backgroundSecondary);
+        border-bottom: 1px solid var(--borderColor);
+        font-size: 20px;
+    }
+    
+    .grid-item-sidebar {
+        grid-area: sidebar;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-color: var(--backgroundSecondary);
+        border-right: 1px solid var(--borderColor);
+        font-size: 20px;
+    }
+    
+    .grid-item-main {
+        grid-area: main;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    
+    .grid-item-footer {
+        grid-area: footer;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        background-color: var(--backgroundSecondary);
+        border-top: 1px solid var(--borderColor);
+        /*testing*/
+        font-size: 18px;
+    }
+    /*testing purposes*/
+    
+    h1 {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    /*
 Changing colors of links, both wehn visited and before
 */
-
-
-/* unvisited link */
-
-a:link {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-
-/* visited link */
-
-a:visited {
-    color: green;
-}
-
-
-/* mouse over link */
-
-a:hover {
-    color: hotpink;
-}
-
-
-/* selected link */
-
-a:active {
-    color: blue;
-}
-
-
-/* 
+    /* unvisited link */
+    
+    a:link {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    /* visited link */
+    
+    a:visited {
+        color: green;
+    }
+    /* mouse over link */
+    
+    a:hover {
+        color: hotpink;
+    }
+    /* selected link */
+    
+    a:active {
+        color: blue;
+    }
+    /* 
 
 Tabs for header 
 
 */
-
-.tabLinks {
-    overflow: hidden;
-    font-size: 0px;
-}
-
-.tabLink {
-    background-color: var(--backgroundSecondary);
-    color: var(--textColor);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 25%;
-}
-
-.tabLink:hover {
-    background-color: hsla(0, 4%, 54%, 0.8);
-}
-
-.tabcontent {
-    display: none;
-    padding: 50px;
-    text-align: center;
-}
-
-.eventBar {
-    overflow: hidden;
-    font-size: 0px;
-}
-
-input[type=button] {
-    background-color: var(--backgroundSecondary);
-    color: var(--textColor);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 100%;
-}
+    
+    .tabLinks {
+        overflow: hidden;
+        font-size: 0px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+    
+    .tabLink {
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: .3s;
+        transition: .3s;
+        background-color: var(--backgroundSecondary);
+        color: var(--textColor);
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+    }
+    
+    .tabLink:after {
+        position: absolute;
+        -webkit-transition: .3s;
+        transition: .3s;
+        content: '';
+        width: 0;
+        left: 50%;
+        bottom: 0;
+        height: 3px;
+        background: purple;
+    }
+    
+    .tabLink:hover {
+        background-color: hsla(0, 4%, 54%, 0.8);
+        cursor: pointer;
+    }
+    
+    .tabLink:hover:after {
+        width: 100%;
+        left: 0;
+    }
+    
+    .tabcontent {
+        display: none;
+        padding: 50px;
+        text-align: center;
+    }
+    
+    .eventBar {
+        overflow: hidden;
+        font-size: 0px;
+    }
+    
+    input[type=button] {
+        background-color: var(--backgroundSecondary);
+        color: var(--textColor);
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 100%;
+    }
