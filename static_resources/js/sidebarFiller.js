@@ -4,12 +4,16 @@ function fillSidebar(game) {
     console.log("game: " + game);
     switch (game) {
         case 'CSGO':
-            fetch('http://localhost:1337/api/csgo/matches')
-                .then((response) => {
-                    return response.json();
-                }).then((jsonData) => {
-                    addButtons(jsonData);
-                })
+            var foo = document.getElementById("fooBar");
+
+            if (foo.children.length <= 0) {
+                fetch('http://localhost:1337/api/csgo/matches')
+                    .then((response) => {
+                        return response.json();
+                    }).then((jsonData) => {
+                        addButtons(jsonData);
+                    })
+            }
 
             break;
 
@@ -28,7 +32,7 @@ function addButtons(jsonData) {
     for (var i = 0; i < jsonData.length; i++) {
 
         var element = document.createElement("input");
-        console.log(jsonData[i].eventName);
+
         element.type = "button";
         element.value = jsonData[i].eventName;
         element.onclick = function() {
