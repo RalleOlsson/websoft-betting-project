@@ -35,7 +35,7 @@ function addButtons(jsonData) {
             alert("vafan är detta ?");
         };
 
-        var foo = document.getElementById("fooBar");
+        var foo = document.getElementById("eventBar");
         foo.appendChild(element);
     }
 }
