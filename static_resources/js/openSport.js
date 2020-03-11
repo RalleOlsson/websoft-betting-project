@@ -3,10 +3,10 @@ function openSport(evt, sportName, color) {
     var i, tabcontent, tablinks;
 
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
+    /*tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
-    }
+    }*/
 
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tabLink");
@@ -16,7 +16,7 @@ function openSport(evt, sportName, color) {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(sportName).style.display = "block";
+    /*document.getElementById(sportName).style.display = "block";*/
     if (evt.currentTarget.className === "tabLink") {
         evt.currentTarget.className += " active";
         evt.currentTarget.style.backgroundColor = color;

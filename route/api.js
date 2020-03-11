@@ -42,22 +42,24 @@ router.get('/csgo/matches', (req, res) => {
     HLTV.getMatches().then((response) => {
         var eventList = [];
         var counter = 0;
-
+        /*res.json(response);*/
         for (var i = 0; i < response.length; i++) {
             var event = {};
             // if the event doesnt exist
-            if (findWithAttr(eventList, 'eventName', response[i].event.name) == -1) {
-                event.eventName = response[i].event.name;
-                event.matches = [];
-                event.matches.push(response[i]);
-                eventList.push(event);
+            if (typeof(response[i].event) !== "undefined") {
+                if (findWithAttr(eventList, 'eventName', response[i].event.name) == -1) {
+                    event.eventName = response[i].event.name;
+                    event.matches = [];
+                    event.matches.push(response[i]);
+                    eventList.push(event);
+                }
+                // find index of the existing event
+                else {
+                    var index = findWithAttr(eventList, 'eventName', response[i].event.name);
+                    eventList[index].matches.push(response[i]);
+                }
             }
-            // find index of the existing event
-            else {
-                var index = findWithAttr(eventList, 'eventName', response[i].event.name);
-                eventList[index].matches.push(response[i]);
-            }
-            counter++;
+
         }
 
         res.json(eventList);

@@ -170,12 +170,6 @@ Tabs for header
     background-color: hsla(0, 4%, 54%, 0.8);
 }
 
-.tabcontent {
-    display: none;
-    padding: 50px;
-    text-align: center;
-}
-
 .eventBar {
     overflow: hidden;
     font-size: 0px;
@@ -190,4 +184,18 @@ input[type=button] {
     padding: 14px 16px;
     font-size: 17px;
     width: 100%;
+}
+
+#tabcontent {
+    text-align: center;
+    margin: 10px;
+}
+
+.content-row {
+    width: 100%;
+    margin: 2px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--backgroundSecondary);
+    border: 1px solid var(--borderColor);
 }

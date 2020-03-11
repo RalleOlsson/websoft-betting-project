@@ -16,10 +16,15 @@ function fillSidebar(game) {
                         }).then((jsonData) => {
                             csgoData = jsonData;
                             addButtons(jsonData);
+                            fillMatchTables(jsonData);
                         });
-                } else {
-                    addButtons(csgoData);
                 }
+                /** if data is already loaded */
+                else {
+                    addButtons(csgoData);
+                    fillMatchTables(csgoData);
+                }
+
             }
 
             sidebarHeader.innerHTML = "CSGO";
@@ -28,6 +33,16 @@ function fillSidebar(game) {
         case 'LOL':
             if (sidebarHeader.innerHTML != "LOL") {
                 eventBar.innerHTML = "";
+                if (!lolData) {
+
+                    /**addButtons(lolData);*/
+                    fillMatchTables(lolData);
+                }
+                /** if data is already loaded */
+                else {
+                    addButtons(lolData);
+                    fillMatchTables(lolData);
+                }
             }
             sidebarHeader.innerHTML = "LOL";
             break;
@@ -35,6 +50,16 @@ function fillSidebar(game) {
         case 'DOTA2':
             if (sidebarHeader.innerHTML != "DOTA2") {
                 eventBar.innerHTML = "";
+                if (!dotaData) {
+
+                    addButtons(lolData);
+                    fillMatchTables(lolData);
+                }
+                /** if data is already loaded */
+                else {
+                    addButtons(lolData);
+                    fillMatchTables(lolData);
+                }
             }
             sidebarHeader.innerHTML = "DOTA2";
             break;
@@ -54,10 +79,15 @@ function addButtons(jsonData) {
         };
 
         eventBar = document.getElementById("eventBar");
+        element.name = i;
+
+        eventBar.onclick = function() {
+            fillMatchTables(jsonData[this.name]);
+        }
         eventBar.appendChild(element);
+
+        if (i === 0) {
+            element.id = "defaultSideBar";
+        }
     }
 }
-
-document.getElementById("btnAdd").onclick = function() {
-    fillSidebar("CSGO");
-};
