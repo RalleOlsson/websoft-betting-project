@@ -29,7 +29,7 @@ function findWithAttr(array, attr, value) {
     return -1;
 }
 
-router.get('/matches/:matchId(*)', (req, res) => {
+router.get('/csgo/matches/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
 
     HLTV.getMatch({ id: matchId }).then(response => {
@@ -37,7 +37,7 @@ router.get('/matches/:matchId(*)', (req, res) => {
     });
 });
 
-router.get('/matches', (req, res) => {
+router.get('/csgo/matches', (req, res) => {
 
     HLTV.getMatches().then((response) => {
         var eventList = [];
@@ -64,7 +64,7 @@ router.get('/matches', (req, res) => {
     });
 });
 
-router.get('/bets/user/:userId(*)', (req, res) => {
+router.get('/csgo/bets/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
     con.query("SELECT * FROM bet WHERE user_userId =" + userId, function(err, result) {
@@ -75,7 +75,7 @@ router.get('/bets/user/:userId(*)', (req, res) => {
     });
 });
 
-router.get('/bets/:betId(*)', (req, res) => {
+router.get('/csgo/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
 
     if (betId !== "" && !(isNaN(betId))) {
@@ -91,7 +91,7 @@ router.get('/bets/:betId(*)', (req, res) => {
     }
 });
 
-router.get('/bets', (req, res) => {
+router.get('/csgo/bets', (req, res) => {
 
     con.query("SELECT * FROM bet", function(err, result) {
 
@@ -101,7 +101,7 @@ router.get('/bets', (req, res) => {
     });
 });
 
-router.get('/events', (req, res) => {
+router.get('/csgo/events', (req, res) => {
     HLTV.getEvents().then(response => {
         res.json(response);
     });

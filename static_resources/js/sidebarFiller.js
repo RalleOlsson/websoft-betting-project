@@ -1,19 +1,38 @@
-function fillSidebar(type) {
+var jsonData = null;
 
-    var element = document.createElement("input");
+function fillSidebar(game) {
+    console.log("game: " + game);
+    switch (game) {
+        case 'CSGO':
+            fetch('http://localhost:1337/api/csgo/matches')
+                .then((response) => {
+                    return response.json();
+                }).then((jsonData) => {
+                    addButtons(jsonData);
+                })
 
-    element.type = type;
-    element.value = type;
-    element.name = type;
-    element.onclick = function() {
-        alert("vafan är detta ?");
-    };
+            break;
 
-    var foo = document.getElementById("fooBar");
-    foo.appendChild(element);
+    }
 
 }
 
+function addButtons(jsonData) {
+    for (var i = 0; i < jsonData.length; i++) {
+        console.log("adding button");
+        var element = document.createElement("input");
+
+        element.type = "button";
+        element.value = jsonData[i].name;
+        element.onclick = function() {
+            alert("vafan är detta ?");
+        };
+
+        var foo = document.getElementById("fooBar");
+        foo.appendChild(element);
+    }
+}
+
 document.getElementById("btnAdd").onclick = function() {
-    fillSidebar("button");
+    fillSidebar("CSGO");
 };

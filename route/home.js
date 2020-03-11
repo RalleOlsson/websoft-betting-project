@@ -10,7 +10,7 @@ var router = express.Router();
 router.get('/', (req, res) => {
     var data = {};
 
-    fetch('http://localhost:1337/api/bets')
+    fetch('http://localhost:1337/api/csgo/bets')
         .then((response) => {
             return response.json();
         })
