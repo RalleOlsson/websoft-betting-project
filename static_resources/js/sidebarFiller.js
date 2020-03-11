@@ -1,28 +1,42 @@
-var jsonData = null;
-
 function fillSidebar(game) {
-    console.log("game: " + game);
+
+    var sidebarHeader = document.getElementById("sidebarHeader");
+    var eventBar = document.getElementById("eventBar");
+
     switch (game) {
         case 'CSGO':
-            var foo = document.getElementById("fooBar");
 
-            if (foo.children.length <= 0) {
-                fetch('http://localhost:1337/api/csgo/matches')
-                    .then((response) => {
-                        return response.json();
-                    }).then((jsonData) => {
-                        addButtons(jsonData);
-                    })
+            if (sidebarHeader.innerHTML != "CSGO") {
+                eventBar.innerHTML = "";
+                if (!csgoData) {
+                    console.log("fetching: api/csgo/matches");
+                    csgoData = fetch('http://localhost:1337/api/csgo/matches')
+                        .then((response) => {
+                            return response.json();
+                        }).then((jsonData) => {
+                            csgoData = jsonData;
+                            addButtons(jsonData);
+                        });
+                } else {
+                    addButtons(csgoData);
+                }
             }
 
+            sidebarHeader.innerHTML = "CSGO";
             break;
 
         case 'LOL':
-
+            if (sidebarHeader.innerHTML != "LOL") {
+                eventBar.innerHTML = "";
+            }
+            sidebarHeader.innerHTML = "LOL";
             break;
 
         case 'DOTA2':
-
+            if (sidebarHeader.innerHTML != "DOTA2") {
+                eventBar.innerHTML = "";
+            }
+            sidebarHeader.innerHTML = "DOTA2";
             break;
 
     }
@@ -39,8 +53,8 @@ function addButtons(jsonData) {
             alert("vafan är detta ?");
         };
 
-        var foo = document.getElementById("eventBar");
-        foo.appendChild(element);
+        eventBar = document.getElementById("eventBar");
+        eventBar.appendChild(element);
     }
 }
 
