@@ -5,7 +5,6 @@ function fillSidebar(game) {
 
     switch (game) {
         case 'CSGO':
-
             if (sidebarHeader.innerHTML != "CSGO") {
                 eventBar.innerHTML = "";
                 if (!csgoData) {
@@ -16,13 +15,12 @@ function fillSidebar(game) {
                         }).then((jsonData) => {
                             csgoData = jsonData;
                             addButtons(jsonData);
-                            fillMatchTables(jsonData);
                         });
                 }
                 /** if data is already loaded */
                 else {
+                    console.log("loading from memory");
                     addButtons(csgoData);
-                    fillMatchTables(csgoData);
                 }
 
             }
@@ -34,14 +32,13 @@ function fillSidebar(game) {
             if (sidebarHeader.innerHTML != "LOL") {
                 eventBar.innerHTML = "";
                 if (!lolData) {
-
+                    document.getElementById("tabcontent").innerHTML = "";
                     /**addButtons(lolData);*/
-                    fillMatchTables(lolData);
                 }
                 /** if data is already loaded */
                 else {
-                    addButtons(lolData);
-                    fillMatchTables(lolData);
+                    document.getElementById("tabcontent").innerHTML = "";
+                    //addButtons(lolData);
                 }
             }
             sidebarHeader.innerHTML = "LOL";
@@ -51,14 +48,13 @@ function fillSidebar(game) {
             if (sidebarHeader.innerHTML != "DOTA2") {
                 eventBar.innerHTML = "";
                 if (!dotaData) {
-
-                    addButtons(lolData);
-                    fillMatchTables(lolData);
+                    document.getElementById("tabcontent").innerHTML = "";
+                    //addButtons(dotaData);
                 }
                 /** if data is already loaded */
                 else {
-                    addButtons(lolData);
-                    fillMatchTables(lolData);
+                    document.getElementById("tabcontent").innerHTML = "";
+                    //addButtons(dotaData);
                 }
             }
             sidebarHeader.innerHTML = "DOTA2";
@@ -74,20 +70,19 @@ function addButtons(jsonData) {
 
         element.type = "button";
         element.value = jsonData[i].eventName;
-        element.onclick = function() {
-            alert("vafan är detta ?");
-        };
 
         eventBar = document.getElementById("eventBar");
         element.name = i;
 
-        eventBar.onclick = function() {
+        element.onclick = function() {
             fillMatchTables(jsonData[this.name]);
         }
+
         eventBar.appendChild(element);
 
         if (i === 0) {
             element.id = "defaultSideBar";
         }
     }
+    document.getElementById("defaultSideBar").click();
 }

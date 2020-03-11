@@ -208,12 +208,13 @@ Tabs for header
    
    #tabcontent {
        text-align: center;
-       margin: 10px;
+       margin: 0px;
    }
    
    .content-row {
+       padding: 4px 0px;
+       margin: 10px 0px;
        width: 100%;
-       margin: 2px 0px;
        margin-left: auto;
        margin-right: auto;
        background-color: var(--backgroundSecondary);

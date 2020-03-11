@@ -1,11 +1,23 @@
 function fillMatchTables(jsonData) {
     tabContent.innerHTML = "";
 
-    var eventTab = document.createElement("div");
+    console.log(jsonData);
 
-    eventTab.className = "content-row";
+    for (var i = 0; i < jsonData.matches.length; i++) {
+        var matchRow = document.createElement("div");
 
-    eventTab.innerHTML = document.getElementsByClassName("active")[0].innerHTML;
+        matchRow.className = "content-row";
 
-    tabContent.appendChild(eventTab);
+        matchRow.innerHTML = jsonData.matches[i].team1.name + " - " + jsonData.matches[i].team2.name;
+
+        tabContent.appendChild(matchRow);
+    }
+
+
+
+
+
+    /*matchRow.innerHTML = document.getElementsByClassName("active")[0].innerHTML;*/
+
+
 }
