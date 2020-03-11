@@ -175,3 +175,19 @@ Tabs for header
     padding: 50px;
     text-align: center;
 }
+
+.eventBar {
+    overflow: hidden;
+    font-size: 0px;
+}
+
+input[type=button] {
+    background-color: var(--backgroundSecondary);
+    color: var(--textColor);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+}
