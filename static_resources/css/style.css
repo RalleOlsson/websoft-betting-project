@@ -203,12 +203,14 @@ Tabs for header
    
    .content-row {
        display: grid;
-       grid-template-columns: min-content auto, 100px, 100px, 1fr;
+       grid-template-columns: auto auto auto;
        grid-template-rows: auto;
        width: 80%;
        height: 40px;
        margin: -1px -1px;
        text-align: center center;
+       margin-left: auto;
+       margin-right: auto;
        background-color: var(--backgroundSecondary);
        border: 1px solid var(--borderColor);
    }

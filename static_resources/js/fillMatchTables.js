@@ -29,7 +29,7 @@ function fillMatchTables(jsonData) {
             time.innerHTML = "live";
         } else {
             var date = new Date(match.date);
-            var timeStr = date.toUTCString();
+            var timeStr = date.toLocaleTimeString();
             time.innerHTML = timeStr;
         }
 
