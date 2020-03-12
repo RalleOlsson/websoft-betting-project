@@ -11,6 +11,7 @@ Global variables
        --textColor: rgba(255, 255, 255, 0.8);
        --borderColor: rgba(255, 255, 255, 0.2);
        --borderBottomColor: #cc13a4;
+       --hoverColor: rgba(142, 133, 133, 0.8);
    }
    
    body {
@@ -20,15 +21,6 @@ Global variables
        height: 100%;
        font-family: arial;
    }
-   /*
-.grid-container {
-    display: grid;
-    color: rgb(255, 255, 255, 1);
-    grid-template-areas: 'header header header header header header' 'sidebar main main main main main' 'footer footer footer footer footer footer';
-    background-color: var(--backgroundPrimary);
-    width: 100%;
-}
-*/
    
    .grid-container {
        display: grid;
@@ -184,12 +176,6 @@ Tabs for header
        left: 0;
    }
    
-   .tabcontent {
-       display: none;
-       padding: 50px;
-       text-align: center;
-   }
-   
    .eventBar {
        overflow: hidden;
        font-size: 0px;
@@ -205,18 +191,57 @@ Tabs for header
        font-size: 17px;
        width: 100%;
    }
+   /** main content tags*/
    
    #tabcontent {
        text-align: center;
        margin: 0px;
+       margin-left: auto;
+       margin-right: auto;
+       width: 100%;
    }
    
    .content-row {
-       padding: 4px 0px;
-       margin: 10px 0px;
-       width: 100%;
-       margin-left: auto;
-       margin-right: auto;
+       display: grid;
+       grid-template-columns: min-content auto, 100px, 100px, 1fr;
+       grid-template-rows: auto;
+       width: 80%;
+       height: 40px;
+       margin: -1px -1px;
+       text-align: center center;
        background-color: var(--backgroundSecondary);
        border: 1px solid var(--borderColor);
+   }
+   
+   .content-row:hover {
+       background-color: var(--hoverColor);
+   }
+   
+   .content-row-item {
+       max-width: 100%;
+       border-left: 1px solid var(--borderColor);
+       border-right: 1px solid var(--borderColor);
+       margin: -1px -1px;
+   }
+   
+   .teams {
+       grid-column-end: 1;
+       max-width: 100%;
+   }
+   
+   .odds1 {
+       max-width: 100%;
+       grid-column-start: 1;
+       grid-column-end: 2;
+   }
+   
+   .odds2 {
+       grid-column-start: 2;
+       grid-column-end: 3;
+   }
+   
+   .matchTime {
+       grid-column-start: 3;
+       grid-column-end: 4;
+       border-right: 0px;
    }
