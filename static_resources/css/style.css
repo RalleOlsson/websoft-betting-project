@@ -124,26 +124,13 @@ Tabs for header
    .tabLinks {
        overflow: hidden;
        font-size: 0px;
-       display: -webkit-box;
-       display: flex;
-       -webkit-box-pack: center;
-       justify-content: center;
-       -webkit-box-align: center;
-       align-items: center;
-       align-content: center;
-       flex-wrap: wrap;
-       margin: 0 auto;
    }
+   /* 
+   Style for header buttons
+   */
    
    .tabLink {
-       -webkit-box-flex: 1;
-       flex: 1 1 auto;
-       text-transform: uppercase;
-       text-align: center;
        position: relative;
-       overflow: hidden;
-       -webkit-transition: .3s;
-       transition: .3s;
        background-color: var(--backgroundSecondary);
        color: var(--textColor);
        outline: none;
@@ -153,10 +140,12 @@ Tabs for header
        font-size: 17px;
        width: 25%;
    }
+   /*
+   Animation for header buttons
+   */
    
    .tabLink:after {
        position: absolute;
-       -webkit-transition: .3s;
        transition: .3s;
        content: '';
        width: 0;

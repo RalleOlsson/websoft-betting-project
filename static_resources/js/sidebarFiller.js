@@ -69,13 +69,37 @@ function addButtons(jsonData) {
         var element = document.createElement("input");
 
         element.type = "button";
+        element.className = "sideBarButton";
         element.value = jsonData[i].eventName;
-
         eventBar = document.getElementById("eventBar");
         element.name = i;
 
+
+
         element.onclick = function() {
+
+            eventBar = document.getElementById("eventBar");
+
+            sideBarButtons = document.getElementsByClassName("sideBarButton");
+
+            for (i = 0; i < sideBarButtons.length; i++) {
+                sideBarButtons[i].className = sideBarButtons[i].className.replace("active", "");
+                sideBarButtons[i].style.backgroundColor = "";
+            }
+
+            if (this.className === "sideBarButton") {
+                this.className += " active";
+                this.style.backgroundColor = "purple";
+            }
+            console.log(eventBar);
+
+
+            this.style.backgroundColor = "purple";
+
+            console.log(this.style.backgroundColor);
+
             fillMatchTables(jsonData[this.name]);
+
         }
 
         eventBar.appendChild(element);
