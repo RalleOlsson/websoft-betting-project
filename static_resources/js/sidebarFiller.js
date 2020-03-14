@@ -91,12 +91,6 @@ function addButtons(jsonData) {
                 this.className += " active";
                 this.style.backgroundColor = "purple";
             }
-            console.log(eventBar);
-
-
-            this.style.backgroundColor = "purple";
-
-            console.log(this.style.backgroundColor);
 
             fillMatchTables(jsonData[this.name]);
 
