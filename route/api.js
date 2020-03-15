@@ -37,6 +37,13 @@ router.get('/csgo/matches/:matchId(*)', (req, res) => {
     });
 });
 
+router.get('/csgo/matchesraw', (req, res) => {
+
+    HLTV.getMatches().then((response) => {
+        res.json(response);
+    });
+});
+
 router.get('/csgo/matches', (req, res) => {
 
     HLTV.getMatches().then((response) => {

@@ -3,6 +3,10 @@
  */
 "use strict";
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const port = process.env.DBWEBB_PORT || 1337;
 const express = require("express");
 const app = express();
@@ -10,18 +14,15 @@ const path = require("path");
 const middleware = require("./middleware/index.js");
 const routeHome = require("./route/home.js");
 const routeLogin = require("./route/login.js");
-const routeIndex = require("./route/index.js");
 const routeApi = require("./route/api.js");
 
 app.set("view engine", "ejs");
 
 app.use(middleware.logIncomingToConsole);
 app.use(express.static(path.join(__dirname, "static_resources")));
-app.use("/", routeIndex);
+app.use("/", routeLogin);
 app.use("/home", routeHome);
 app.use("/api", routeApi);
-app.use("/login", routeLogin);
-
 app.listen(port, logStartUpDetailsToConsole);
 
 /**

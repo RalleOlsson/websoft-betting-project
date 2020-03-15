@@ -201,7 +201,12 @@ Tabs for header
        width: 100%;
    }
    
-   .content-row {
+   .content-row-day {
+       width: 80%;
+       height: 40px;
+   }
+   
+   .content-row-match {
        display: grid;
        grid-template-columns: auto auto auto;
        grid-template-rows: auto;
@@ -215,7 +220,7 @@ Tabs for header
        border: 1px solid var(--borderColor);
    }
    
-   .content-row:hover {
+   .content-row-match:hover {
        background-color: var(--hoverColor);
    }
    

@@ -7,7 +7,8 @@ const fetch = require("node-fetch");
 var express = require('express');
 var router = express.Router();
 
-router.get('/', (req, res) => {
+
+router.get('/', checkAuthenticated, (req, res) => {
     var data = {};
 
     fetch('http://localhost:1337/api/csgo/bets')
@@ -21,7 +22,16 @@ router.get('/', (req, res) => {
     res.render("home", data);
 });
 
-router.get("/about", (req, res) => {
+router.get("/about", checkAuthenticated, (req, res) => {
     res.send("About something");
 });
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    res.redirect('/login');
+}
+
 module.exports = router;
