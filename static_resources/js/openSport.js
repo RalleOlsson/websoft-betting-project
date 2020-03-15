@@ -20,8 +20,8 @@ function openSport(evt, sportName, color) {
     if (evt.currentTarget.className === "tabLink") {
         evt.currentTarget.className += " active";
         evt.currentTarget.style.backgroundColor = color;
-
     }
+
 
     fillSidebar(sportName);
 }
