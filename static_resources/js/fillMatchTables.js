@@ -6,6 +6,24 @@ function fillMatchTables(jsonData) {
     var currentDayRow = null;
     var day = null;
 
+    var matchesHeader = document.createElement("div");
+
+    matchesHeader.style.marginTop = "0px";
+    matchesHeader.className = "content-row-match";
+    matchesHeader.style.textAlign = "center";
+    matchesHeader.style.borderTopRightRadius = "4px";
+    matchesHeader.style.borderTopLeftRadius = "4px";
+
+
+    var matchesText = document.createElement("div");
+    matchesText.style.gridColumnStart = "1";
+    matchesText.style.gridColumnEnd = "5";
+    matchesText.innerHTML = "Matches";
+
+    matchesHeader.appendChild(matchesText);
+
+    tabContent.appendChild(matchesHeader);
+
     for (var i = 0; i < jsonData.matches.length; i++) {
 
         var match = jsonData.matches[i];
@@ -34,6 +52,12 @@ function fillMatchTables(jsonData) {
             var date = new Date(match.date);
             var timeStr = date.toUTCString();
             time.innerHTML = timeStr;
+        }
+
+        if (i == jsonData.matches.length - 1) {
+            row.style.borderBottomLeftRadius = "4px";
+            row.style.borderBottomRightRadius = "4px";
+
         }
 
         row.appendChild(teams);
