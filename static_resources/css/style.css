@@ -273,28 +273,22 @@ Tabs for header
        padding-bottom: 20px;
    }
    
-   .loginForm {
-       padding: 10px 10px;
-   }
-   
-   .emailLabel {
-       padding: 10px 0px;
-   }
-   
-   .passLabel {
-       padding: 10px 0px;
-   }
-   
-   .passInput {
-       padding: 0px 0px 10px;
+   .loginLabel {
+       padding: 5px;
    }
    
    .loginButton {
-       padding: 0px 60px 10px 0px;
-       float: left;
+       color: var(--textColor);
+       padding: 10px 30px;
+       font-size: 17px;
+       border: none;
+       border-radius: 3px;
+       background-color: var(--primaryColor);
    }
    
    .logoLogin {
        padding-top: 40px;
        text-align: center;
    }
+   
+   .registerLink {}
