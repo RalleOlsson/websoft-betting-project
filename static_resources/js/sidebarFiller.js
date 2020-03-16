@@ -89,7 +89,7 @@ function addButtons(jsonData) {
 
             if (this.className === "sideBarButton") {
                 this.className += " active";
-                this.style.backgroundColor = "purple";
+                this.style.backgroundColor = "var(--primaryColor)";
             }
 
             fillMatchTables(jsonData[this.name]);
