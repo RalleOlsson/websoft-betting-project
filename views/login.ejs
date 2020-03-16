@@ -16,23 +16,23 @@
         <%= messages.error %>
             <% } %>
                 <div class="loginPage">
-                    <form class="loginForm" action="/login" method="POST">
-                        <div class="emailLabel">
+                    <form class="loginLabel" action="/login" method="POST">
+                        <div class="loginLabel">
                             <label for="email">Email</label>
                         </div>
-                        <div class="emailInput">
+                        <div class="loginLabel">
                             <input type="email" id="email" name="email" required>
                         </div>
-                        <div class="passLabel">
+                        <div class="loginLabel">
                             <label for="password">Password</label>
                         </div>
-                        <div class="passInput">
+                        <div class="loginLabel">
                             <input type="password" id="password" name="password" required>
                         </div>
-                        <div class="loginButton">
-                            <button type="submit">Login</button>
+                        <div class="loginLabel">
+                            <button class="loginButton" type="submit">Login</button>
                         </div>
-                        <div class="registerLink">
+                        <div class="loginLabel">
                             <a href="/Register">Register</a>
                         </div>
 
