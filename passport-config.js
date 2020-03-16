@@ -25,7 +25,6 @@ function initialize(passport) {
                 return done(null, false, "No user with that email")
             }
 
-
             try {
                 if (await bcrypt.compare(password, result[0].password)) {
                     return done(null, result[0])

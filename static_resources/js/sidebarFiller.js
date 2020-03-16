@@ -83,7 +83,7 @@ function addButtons(jsonData) {
             sideBarButtons = document.getElementsByClassName("sideBarButton");
 
             for (i = 0; i < sideBarButtons.length; i++) {
-                sideBarButtons[i].className = sideBarButtons[i].className.replace("active", "");
+                sideBarButtons[i].className = sideBarButtons[i].className.replace(" active", "");
                 sideBarButtons[i].style.backgroundColor = "";
             }
 
