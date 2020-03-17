@@ -27,6 +27,7 @@ router.use(session({
 
 router.use(passport.initialize());
 router.use(passport.session());
+router.use(methodOverride('_method'));
 
 // Will simply redirect to the homepage
 router.get('/', checkAuthenticated, (req, res) => {
@@ -87,7 +88,7 @@ router.post('/register', checkNotAthenticated, async(req, res) => {
 
 router.delete('/logout', (req, res) => {
     req.logOut();
-    req.redirect('login');
+    res.redirect('login');
 })
 
 function checkAuthenticated(req, res, next) {

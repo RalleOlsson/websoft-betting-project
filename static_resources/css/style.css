@@ -23,7 +23,7 @@ Global variables
        font-family: arial;
    }
    
-   .grid-container {
+   .grid-container-home {
        display: grid;
        color: var(--textColor);
        grid-template-columns: 20% 1fr;
@@ -69,7 +69,7 @@ Specific grid items
    }
    
    .logo {
-       margin-top: 40px;
+       margin-top: 20px;
        margin-left: auto;
        margin-right: auto;
        text-align: center;
@@ -322,11 +322,6 @@ Tabs for header
        border-radius: 3px;
        background-color: var(--primaryColor);
    }
-   
-   .logoLogin {
-       padding-top: 40px;
-       text-align: center;
-   }
    /*
    About css items
    */
@@ -338,4 +333,18 @@ Tabs for header
        margin: 0px 0px;
        color: var(--textColor);
        background-color: var(--backgroundSecondary);
+   }
+   
+   .navigation {
+       display: grid;
+       grid-template-columns: auto auto auto;
+       background-color: var(--backgroundSecondary);
+       margin-left: auto;
+       margin-right: auto;
+       text-align: center;
+       width: 100%;
+   }
+   
+   .navigation form {
+       display: inline-block;
    }
