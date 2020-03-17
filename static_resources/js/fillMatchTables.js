@@ -13,6 +13,7 @@ function fillMatchTables(jsonData) {
     matchesHeader.style.textAlign = "center";
     matchesHeader.style.borderTopRightRadius = "4px";
     matchesHeader.style.borderTopLeftRadius = "4px";
+    matchesHeader.style.backgroundColor = "var(--primaryColor)";
 
 
     var matchesText = document.createElement("div");

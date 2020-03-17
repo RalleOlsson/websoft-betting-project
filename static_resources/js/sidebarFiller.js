@@ -74,8 +74,6 @@ function addButtons(jsonData) {
         eventBar = document.getElementById("eventBar");
         element.name = i;
 
-
-
         element.onclick = function() {
 
             eventBar = document.getElementById("eventBar");
@@ -101,6 +99,7 @@ function addButtons(jsonData) {
         if (i === 0) {
             element.id = "defaultSideBar";
         }
+
     }
     document.getElementById("defaultSideBar").click();
 }

@@ -79,6 +79,7 @@ Specific grid items
        grid-row-end: 4;
        background-color: var(--backgroundSecondary);
        font-size: 20px;
+       padding-bottom: 50px;
    }
    
    .main-grid-item {
@@ -182,6 +183,7 @@ Tabs for header
        font-size: 0px;
        background-color: var(--backgroundPrimary);
        width: auto;
+       padding-bottom: 1px;
    }
    
    .sideBarButton {
@@ -218,9 +220,9 @@ Tabs for header
    .content-row-match {
        cursor: pointer;
        display: grid;
-       grid-template-columns: auto auto auto;
+       grid-template-columns: 1fr 50px 50px 1fr;
        grid-template-rows: auto;
-       max-width: 100%;
+       column-gap: 0px;
        margin-top: 1px;
        background-color: var(--backgroundSecondary);
    }
@@ -238,22 +240,23 @@ Tabs for header
    }
    
    .teams {
-       grid-column-end: 1;
-   }
-   
-   .odds1 {
        grid-column-start: 1;
        grid-column-end: 2;
    }
    
-   .odds2 {
+   .odds1 {
        grid-column-start: 2;
        grid-column-end: 3;
    }
    
-   .matchTime {
+   .odds2 {
        grid-column-start: 3;
        grid-column-end: 4;
+   }
+   
+   .matchTime {
+       grid-column-start: 4;
+       grid-column-end: 5;
        border-right: 0px;
    }
    /*
