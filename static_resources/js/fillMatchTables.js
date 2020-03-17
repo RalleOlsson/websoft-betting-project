@@ -39,10 +39,10 @@ function fillMatchTables(jsonData) {
         teams.className = "content-row-item teams";
 
         var odds1 = document.createElement("div");
-        odds1.innerHTML = "1.00";
+        odds1.innerHTML = "x";
         odds1.className = "content-row-item odds1";
         var odds2 = document.createElement("div");
-        odds2.innerHTML = "2.00";
+        odds2.innerHTML = "x";
         odds2.className = "content-row-item odds2";
         var time = document.createElement("div");
         time.className = "content-row-item matchTime";
@@ -57,9 +57,24 @@ function fillMatchTables(jsonData) {
 
         if (i == jsonData.matches.length - 1) {
             row.style.borderBottomLeftRadius = "var(--cornerRadius)";
-            row.style.borderBottomRightRadius = "var(--cornerRadius";
+            row.style.borderBottomRightRadius = "var(--cornerRadius)";
 
         }
+
+        const id = match.id;
+        row.onclick = function() {
+            alert(id + "");
+        }
+
+        const odd1 = odds1;
+        const odd2 = odds2;
+        fetch('http://localhost:1337/api/csgo/odds/' + id)
+            .then((response) => {
+                return response.json();
+            }).then((jsonData) => {
+                odd1.innerHTML = jsonData[0].team1odds;
+                odd2.innerHTML = jsonData[0].team2odds;
+            });
 
         row.appendChild(teams);
         row.appendChild(odds1);
@@ -67,6 +82,7 @@ function fillMatchTables(jsonData) {
         row.appendChild(time);
 
         tabContent.appendChild(row);
+
     }
 
 

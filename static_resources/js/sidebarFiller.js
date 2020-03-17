@@ -9,7 +9,7 @@ function fillSidebar(game) {
                 eventBar.innerHTML = "";
                 if (!csgoData) {
                     console.log("fetching: api/csgo/matches");
-                    csgoData = fetch('http://localhost:1337/api/csgo/matches')
+                    fetch('http://localhost:1337/api/csgo/matches')
                         .then((response) => {
                             return response.json();
                         }).then((jsonData) => {

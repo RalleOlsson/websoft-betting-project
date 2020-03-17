@@ -11,7 +11,7 @@ Global variables
        --borderColor: rgba(255, 255, 255, 0.2);
        --hoverColor: rgba(142, 133, 133, 0.8);
        --rowHeight: 14px;
-       --cornerRadius: 8px;
+       --cornerRadius: 6px;
    }
    
    body {
@@ -58,12 +58,13 @@ Specific grid items
    }
    
    .logo {
-       margin-top: 10px;
+       margin-top: 40px;
        margin-left: auto;
        margin-right: auto;
+       text-align: center;
    }
    
-   .nav-grid-item {
+   .content-nav-grid-item {
        grid-area: nav;
        grid-column-start: 1;
        grid-column-end: 3;
@@ -153,7 +154,8 @@ Tabs for header
        cursor: pointer;
        padding: var(--rowHeight) 16px;
        font-size: 17px;
-       width: 25%;
+       width: 100%;
+       max-width: 25%;
    }
    /*
    Animation for header buttons
@@ -288,11 +290,6 @@ Tabs for header
        border: none;
        border-radius: 3px;
        background-color: var(--primaryColor);
-   }
-   
-   .logoLogin {
-       padding-top: 40px;
-       text-align: center;
    }
    
    .registerLink {}

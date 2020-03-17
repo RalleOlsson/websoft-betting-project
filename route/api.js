@@ -20,6 +20,23 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
+function fillDataBase(dataset) {
+    for (var i = 0; i < dataset.length; i++) {
+
+        con.query("INSERT IGNORE INTO bet_webv2.match (matchId, team1odds, team2odds) VALUES" +
+            "(" + dataset[i].id + ", '" +
+            (Math.floor(Math.random() * 301) + 100) / 100 + "', '" +
+            (Math.floor(Math.random() * 301) + 100) / 100 + "')",
+            function(err, result) {
+                if (err) throw err;
+            });
+    }
+};
+
+HLTV.getMatches().then((response) => {
+    fillDataBase(response);
+});
+
 function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
         if (array[i][attr] === value) {
@@ -47,6 +64,9 @@ router.get('/csgo/matchesraw', (req, res) => {
 router.get('/csgo/matches', (req, res) => {
 
     HLTV.getMatches().then((response) => {
+
+        fillDataBase(response);
+
         var eventList = [];
         var counter = 0;
         /*res.json(response);*/
@@ -110,9 +130,10 @@ router.get('/csgo/bets', (req, res) => {
     });
 });
 
-router.get('/csgo/events', (req, res) => {
-    HLTV.getEvents().then(response => {
-        res.json(response);
+router.get('/csgo/odds/:matchId(*)', (req, res) => {
+    const { matchId } = req.params;
+    con.query("SELECT * FROM bet_webv2.match WHERE matchId = " + matchId, function(err, result) {
+        res.json(result);
     });
 });
 
