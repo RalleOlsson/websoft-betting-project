@@ -23,7 +23,7 @@ router.get('/', checkAuthenticated, (req, res) => {
 });
 
 router.get("/about", checkAuthenticated, (req, res) => {
-    res.send("About something");
+    res.render("about");
 });
 
 function checkAuthenticated(req, res, next) {

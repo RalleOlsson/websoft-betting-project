@@ -34,6 +34,17 @@ Global variables
        column-gap: 10px;
        row-gap: 10px;
    }
+   
+   .grid-container-about {
+       display: grid;
+       color: var(--textColor);
+       grid-template-columns: auto auto;
+       grid-template-rows: auto auto;
+       background-color: var(--backgroundPrimary);
+       min-height: 100%;
+       column-gap: 10px;
+       row-gap: 10px;
+   }
    /*
 A general grid item styling that should affect all 4 grid items
 Needs to be above other grid items so it can be overriden
@@ -100,8 +111,26 @@ Specific grid items
        grid-row-end: 5;
        /*testing*/
        font-size: 18px;
+       padding-bottom: 20px;
+   }
+   
+   .about-grid-item-rasmus {
+       grid-column-start: 1;
+       grid-column-end: 2;
+   }
+   
+   .about-grid-item-johan {
+       grid-column-start: 2;
+       grid-column-end: 3;
    }
    /*testing purposes*/
+   /*
+   footer css
+   */
+   
+   .footerLinks {
+       list-style-type: none;
+   }
    
    h1 {
        margin-left: auto;
@@ -290,4 +319,22 @@ Tabs for header
        border: none;
        border-radius: 3px;
        background-color: var(--primaryColor);
+   }
+   
+   .logoLogin {
+       padding-top: 40px;
+       text-align: center;
+   }
+   /*
+   About css items
+   */
+   
+   .aboutHeader {
+       border-radius: 10px;
+       padding-top: 20px;
+       padding-bottom: 20px;
+       margin-right: 10px;
+       margin-left: 10px;
+       color: var(--textColor);
+       background-color: var(--backgroundSecondary);
    }
