@@ -22,7 +22,6 @@ function openSport(evt, sportName, color) {
         evt.currentTarget.style.backgroundColor = color;
     }
 
-
     fillSidebar(sportName);
 }
 

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<HTML lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Home</title>
@@ -13,18 +16,22 @@
             <%- include('view/header'); -%>
         </div>
 
-        <div class="grid-item nav-grid-item">
-            <%- include('view/mainNav'); -%>
+        <div class="grid-item content-nav-grid-item">
+            <div class="tabLinks">
+                <button class="tabLink" onclick="openSport(event, 'CSGO', 'var(--primaryColor)')" id="defaultOpen">CS:GO</button>
+                <button class="tabLink" onclick="openSport(event, 'LOL', 'var(--primaryColor)')">LOL</button>
+                <button class="tabLink" onclick="openSport(event, 'DOTA2', 'var(--primaryColor)')">DOTA2</button>
+                <button class="tabLink" onclick="openSport(event, 'VETEJ', 'var(--primaryColor)')">Vet Ej</button>
+            </div>
         </div>
 
         <div class="grid-item sidebar-grid-item">
-            <%- include('view/sidebar'); -%>
+            <h1 id="sidebarHeader">sidebar</h1>
+            <div id="eventBar"></div>
         </div>
 
         <div class="grid-item main-grid-item">
-            <div id="tabcontent">
-
-            </div>
+            <div id="tabcontent"></div>
         </div>
 
         <div class="grid-item footer-grid-item">

@@ -11,6 +11,7 @@ Global variables
        --borderColor: rgba(255, 255, 255, 0.2);
        --hoverColor: rgba(142, 133, 133, 0.8);
        --rowHeight: 14px;
+       --cornerRadius: 6px;
    }
    
    body {
@@ -52,7 +53,7 @@ Needs to be above other grid items so it can be overriden
    .grid-item {
        width: 100%;
        text-align: center;
-       border-radius: 4px;
+       border-radius: var(--cornerRadius);
    }
    /*
 Specific grid items
@@ -68,12 +69,13 @@ Specific grid items
    }
    
    .logo {
-       margin-top: 10px;
+       margin-top: 40px;
        margin-left: auto;
        margin-right: auto;
+       text-align: center;
    }
    
-   .nav-grid-item {
+   .content-nav-grid-item {
        grid-area: nav;
        grid-column-start: 1;
        grid-column-end: 3;
@@ -90,7 +92,7 @@ Specific grid items
        grid-row-end: 4;
        background-color: var(--backgroundSecondary);
        font-size: 20px;
-       padding-bottom: 50px;
+       padding-bottom: 46px;
    }
    
    .main-grid-item {
@@ -181,7 +183,8 @@ Tabs for header
        cursor: pointer;
        padding: var(--rowHeight) 16px;
        font-size: 17px;
-       width: 25%;
+       width: 100%;
+       max-width: 25%;
    }
    /*
    Animation for header buttons
@@ -318,6 +321,7 @@ Tabs for header
        background-color: var(--primaryColor);
    }
    
+<<<<<<< HEAD
    .logoLogin {
        padding-top: 40px;
        text-align: center;
@@ -335,3 +339,6 @@ Tabs for header
        color: var(--textColor);
        background-color: var(--backgroundSecondary);
    }
+=======
+   .registerLink {}
+>>>>>>> 6060ece713d5f0d9944ef82b756baacfafca04ca
