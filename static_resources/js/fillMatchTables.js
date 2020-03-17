@@ -11,8 +11,8 @@ function fillMatchTables(jsonData) {
     matchesHeader.style.marginTop = "0px";
     matchesHeader.className = "content-row-match";
     matchesHeader.style.textAlign = "center";
-    matchesHeader.style.borderTopRightRadius = "4px";
-    matchesHeader.style.borderTopLeftRadius = "4px";
+    matchesHeader.style.borderTopRightRadius = "var(--cornerRadius)";
+    matchesHeader.style.borderTopLeftRadius = "var(--cornerRadius)";
     matchesHeader.style.backgroundColor = "var(--primaryColor)";
 
 
@@ -56,8 +56,8 @@ function fillMatchTables(jsonData) {
         }
 
         if (i == jsonData.matches.length - 1) {
-            row.style.borderBottomLeftRadius = "4px";
-            row.style.borderBottomRightRadius = "4px";
+            row.style.borderBottomLeftRadius = "var(--cornerRadius)";
+            row.style.borderBottomRightRadius = "var(--cornerRadius";
 
         }
 
