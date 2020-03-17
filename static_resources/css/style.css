@@ -117,11 +117,13 @@ Specific grid items
    .about-grid-item-rasmus {
        grid-column-start: 1;
        grid-column-end: 2;
+       background-color: var(--backgroundSecondary);
    }
    
    .about-grid-item-johan {
        grid-column-start: 2;
        grid-column-end: 3;
+       background-color: var(--backgroundSecondary);
    }
    /*testing purposes*/
    /*
@@ -333,8 +335,7 @@ Tabs for header
        border-radius: 10px;
        padding-top: 20px;
        padding-bottom: 20px;
-       margin-right: 10px;
-       margin-left: 10px;
+       margin: 0px 0px;
        color: var(--textColor);
        background-color: var(--backgroundSecondary);
    }
