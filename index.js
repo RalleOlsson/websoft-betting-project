@@ -15,6 +15,8 @@ const middleware = require("./middleware/index.js");
 const routeHome = require("./route/home.js");
 const routeLogin = require("./route/login.js");
 const routeApi = require("./route/api.js");
+const routeAccount = require("./route/account.js");
+
 
 app.set("view engine", "ejs");
 
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, "static_resources")));
 app.use("/", routeLogin);
 app.use("/home", routeHome);
 app.use("/api", routeApi);
+app.use("/account", routeAccount);
+
 app.listen(port, logStartUpDetailsToConsole);
 
 /**
