@@ -134,6 +134,16 @@ Specific grid items
        list-style-type: none;
    }
    
+   .footer-grid-item-left {
+       grid-column-start: 1;
+       grid-column-end: 2;
+   }
+   
+   .footer-grid-item-right {
+       grid-column-start: 2;
+       grid-column-end: 3;
+   }
+   
    h1 {
        margin-left: auto;
        margin-right: auto;
