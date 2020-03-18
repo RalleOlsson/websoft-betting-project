@@ -1,9 +1,23 @@
-<ul>
-    Commands starting from api/
-    <li>bets</li>
-    <li>bets{betId}</li>
-    <li>bets/user/{userId}</li>
-    <li>matches</li>
-    <li>matches/{matchId}</li>
+<!DOCTYPE html>
+<HTML lang="en">
 
-</ul>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../favicon.ico">
+</head>
+
+<%- include('view/header'); -%>
+
+    <ul style="color: white;">
+        Commands starting from api/
+        <li>/csgo/bets</li>
+        <li>/csgo/bets{betId}</li>
+        <li>/csgo/bets/user/{userId}</li>
+        <li>/csgo/matches</li>
+        <li>/csgo/matches/{matchId}</li>
+        <li>/csgo/odds</li>
+        <li>/csgo/odds/{matchId}</li>
+
+    </ul>

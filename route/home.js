@@ -11,14 +11,6 @@ var router = express.Router();
 router.get('/', checkAuthenticated, (req, res) => {
     var data = {};
 
-    fetch('http://localhost:1337/api/csgo/bets')
-        .then((response) => {
-            return response.json();
-        })
-        .then((myJson) => {
-            console.log(myJson);
-        });
-
     res.render("home", data);
 });
 

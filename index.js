@@ -17,7 +17,6 @@ const routeLogin = require("./route/login.js");
 const routeApi = require("./route/api.js");
 const routeAccount = require("./route/account.js");
 
-
 app.set("view engine", "ejs");
 
 app.use(middleware.logIncomingToConsole);

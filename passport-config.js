@@ -41,7 +41,6 @@ function initialize(passport) {
     passport.serializeUser((user, done) => { done(null, user.userId) })
     passport.deserializeUser((id, done) => {
         con.query("SELECT * FROM user WHERE userId = " + id, function(err, result) {
-            console.log(result);
             return done(err, result[0]);
         })
     });
