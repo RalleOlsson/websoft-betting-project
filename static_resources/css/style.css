@@ -170,7 +170,7 @@ Changing colors of links, both wehn visited and before
    /* mouse over link */
    
    a:hover {
-       color: var(--hoverColor);
+       color: white;
    }
    /* selected link */
    
@@ -382,7 +382,7 @@ Tabs for header
    }
    
    .navigation form button:hover {
-       color: var(--hoverColor);
+       color: white;
    }
    
    .navigation form button:active {
