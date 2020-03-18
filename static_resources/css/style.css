@@ -38,8 +38,7 @@ Global variables
    .grid-container-about {
        display: grid;
        color: var(--textColor);
-       grid-template-columns: auto auto;
-       grid-template-rows: auto auto;
+       grid-template-columns: 50% auto;
        background-color: var(--backgroundPrimary);
        min-height: 100%;
        column-gap: 10px;
@@ -133,6 +132,21 @@ Specific grid items
    .footerLinks {
        list-style-type: none;
        padding: 0px 0px;
+   }
+   
+   .footerLinks li {
+       padding: 10px;
+   }
+   
+   .footer-grid-item-left {
+       font-size: 12px;
+       grid-column-start: 1;
+       grid-column-end: 2;
+   }
+   
+   .footer-grid-item-right {
+       grid-column-start: 2;
+       grid-column-end: 3;
    }
    
    h1 {
@@ -332,6 +346,7 @@ Tabs for header
        padding-top: 20px;
        padding-bottom: 20px;
        margin: 0px 0px;
+       margin-bottom: 10px;
        color: var(--textColor);
        background-color: var(--backgroundSecondary);
    }
