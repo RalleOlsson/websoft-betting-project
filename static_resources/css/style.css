@@ -160,6 +160,7 @@ Changing colors of links, both wehn visited and before
    
    a:link {
        color: rgba(255, 255, 255, 0.8);
+       text-decoration: none;
    }
    /* visited link */
    
