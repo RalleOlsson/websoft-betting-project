@@ -175,7 +175,7 @@ Changing colors of links, both wehn visited and before
    /* selected link */
    
    a:active {
-       color: blue;
+       color: var(--hoverColor);
    }
    /* 
 
@@ -352,6 +352,7 @@ Tabs for header
    }
    
    .navigation {
+       position: relative;
        display: inline-block;
        grid-template-columns: auto auto auto;
        background-color: var(--backgroundSecondary);
@@ -365,9 +366,12 @@ Tabs for header
    
    .navigation a {
        text-decoration: none;
+       padding: 1em;
    }
    
    .navigation form {
+       position: absolute;
+       right: 5%;
        display: inline-block;
    }
    
@@ -386,5 +390,5 @@ Tabs for header
    }
    
    .navigation form button:active {
-       color: blue;
+       color: var(--hoverColor);
    }

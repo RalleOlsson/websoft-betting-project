@@ -1,4 +1,4 @@
-function fillMatchTables(jsonData) {
+function fillMatchTables(jsonData, game) {
     tabContent.innerHTML = "";
 
     console.log(jsonData);
@@ -68,7 +68,7 @@ function fillMatchTables(jsonData) {
 
         const odd1 = odds1;
         const odd2 = odds2;
-        fetch('http://localhost:1337/api/csgo/odds/' + id)
+        fetch('http://localhost:1337/api/' + game + '/odds/' + id)
             .then((response) => {
                 return response.json();
             }).then((jsonData) => {

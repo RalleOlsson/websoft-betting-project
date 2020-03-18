@@ -7,22 +7,7 @@ function fillSidebar(game) {
         case 'CSGO':
             if (sidebarHeader.innerHTML != "CSGO") {
                 eventBar.innerHTML = "";
-                if (!csgoData) {
-                    console.log("fetching: api/csgo/matches");
-                    fetch('http://localhost:1337/api/csgo/matches')
-                        .then((response) => {
-                            return response.json();
-                        }).then((jsonData) => {
-                            csgoData = jsonData;
-                            addButtons(jsonData);
-                        });
-                }
-                /** if data is already loaded */
-                else {
-                    console.log("loading from memory");
-                    addButtons(csgoData);
-                }
-
+                fetchEvents(game);
             }
 
             sidebarHeader.innerHTML = "CSGO";
@@ -31,15 +16,9 @@ function fillSidebar(game) {
         case 'LOL':
             if (sidebarHeader.innerHTML != "LOL") {
                 eventBar.innerHTML = "";
-                if (!lolData) {
-                    document.getElementById("tabcontent").innerHTML = "";
-                    /**addButtons(lolData);*/
-                }
-                /** if data is already loaded */
-                else {
-                    document.getElementById("tabcontent").innerHTML = "";
-                    //addButtons(lolData);
-                }
+                //fetchEvents(game);
+                workInProgress();
+
             }
             sidebarHeader.innerHTML = "LOL";
             break;
@@ -47,23 +26,64 @@ function fillSidebar(game) {
         case 'DOTA2':
             if (sidebarHeader.innerHTML != "DOTA2") {
                 eventBar.innerHTML = "";
-                if (!dotaData) {
-                    document.getElementById("tabcontent").innerHTML = "";
-                    //addButtons(dotaData);
-                }
-                /** if data is already loaded */
-                else {
-                    document.getElementById("tabcontent").innerHTML = "";
-                    //addButtons(dotaData);
-                }
+                //fetchEvents(game);
+                workInProgress();
             }
             sidebarHeader.innerHTML = "DOTA2";
             break;
 
+        case 'OW':
+            if (sidebarHeader.innerHTML != "OW") {
+                eventBar.innerHTML = "";
+
+                var data = [{
+                        eventName: 'OW test event1',
+                        matches: [{
+                                id: 1,
+                                date: 1584651600000,
+                                team1: { name: 'XQC' },
+                                team2: { name: 'Seagull' },
+                                live: false
+
+                            },
+                            {
+                                id: 2,
+                                team1: { name: 'Covid-19' },
+                                team2: { name: 'Vaccine' },
+                                date: 1584565200000,
+                                live: false
+                            }
+                        ]
+                    },
+                    {
+                        eventName: 'OW test event2',
+                        matches: [{
+                                id: 3,
+                                team1: { name: 'T1' },
+                                team2: { name: 'T2' },
+                                date: 1584565200000,
+                                live: false
+                            },
+                            {
+                                id: 4,
+                                team1: { name: 'T3' },
+                                team2: { name: 'T4' },
+                                date: 1584565200000,
+                                live: false
+                            }
+                        ]
+                    }
+                ];
+                console.log(data[0]);
+                addButtons(data, 'ow');
+                sidebarHeader.innerHTML = "OW";
+                break;
+            }
+
     }
 }
 
-function addButtons(jsonData) {
+function addButtons(jsonData, game) {
     for (var i = 0; i < jsonData.length; i++) {
 
         var element = document.createElement("input");
@@ -90,7 +110,7 @@ function addButtons(jsonData) {
                 this.style.backgroundColor = "var(--primaryColor)";
             }
 
-            fillMatchTables(jsonData[this.name]);
+            fillMatchTables(jsonData[this.name], game);
 
         }
 
@@ -102,4 +122,45 @@ function addButtons(jsonData) {
 
     }
     document.getElementById("defaultSideBar").click();
+}
+
+function fetchEvents(game) {
+    if (!gamesData[game]) {
+        console.log("fetching: api/" + game + "/matches");
+        fetch('http://localhost:1337/api/' + game + '/matches')
+            .then((response) => {
+                return response.json();
+            }).then((jsonData) => {
+                gamesData[game] = jsonData;
+                addButtons(jsonData, game);
+            });
+    }
+    /** if data is already loaded */
+    else {
+        console.log("loading from memory");
+        addButtons(gamesData[game], game);
+    }
+
+}
+
+function workInProgress() {
+    document.getElementById("tabcontent").innerHTML = "";
+    var matchesHeader = document.createElement("div");
+
+    matchesHeader.style.marginTop = "0px";
+    matchesHeader.className = "content-row-match";
+    matchesHeader.style.textAlign = "center";
+    matchesHeader.style.borderTopRightRadius = "var(--cornerRadius)";
+    matchesHeader.style.borderTopLeftRadius = "var(--cornerRadius)";
+    matchesHeader.style.backgroundColor = "var(--primaryColor)";
+
+
+    var matchesText = document.createElement("div");
+    matchesText.style.gridColumnStart = "1";
+    matchesText.style.gridColumnEnd = "5";
+    matchesText.innerHTML = "Work in progress";
+
+    matchesHeader.appendChild(matchesText);
+
+    tabContent.appendChild(matchesHeader);
 }

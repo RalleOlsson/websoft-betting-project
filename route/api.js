@@ -137,6 +137,14 @@ router.get('/csgo/odds/:matchId(*)', (req, res) => {
     });
 });
 
+router.get('/ow/odds/:matchId(*)', (req, res) => {
+    const { matchId } = req.params;
+
+    con.query("SELECT * FROM bet_webv2.match WHERE matchId = " + matchId, function(err, result) {
+        res.json(result);
+    });
+});
+
 /** shows a hardcoded list of available commands */
 router.get('/', (req, res) => {
     res.render("api");
