@@ -132,6 +132,7 @@ Specific grid items
    
    .footerLinks {
        list-style-type: none;
+       padding: 0px 0px;
    }
    
    h1 {
@@ -155,7 +156,7 @@ Changing colors of links, both wehn visited and before
    /* mouse over link */
    
    a:hover {
-       color: hotpink;
+       color: var(--hoverColor);
    }
    /* selected link */
    
@@ -336,15 +337,39 @@ Tabs for header
    }
    
    .navigation {
-       display: grid;
+       display: inline-block;
        grid-template-columns: auto auto auto;
        background-color: var(--backgroundSecondary);
        margin-left: auto;
        margin-right: auto;
        text-align: center;
        width: 100%;
+       font-size: 16px;
+       padding: 1em 0px;
+   }
+   
+   .navigation a {
+       text-decoration: none;
    }
    
    .navigation form {
        display: inline-block;
+   }
+   
+   .navigation form button {
+       cursor: pointer;
+       border: none;
+       outline: none;
+       background-color: var(--backgroundSecondary);
+       font-size: 1em;
+       padding: 0px 0px;
+       color: var(--textColor);
+   }
+   
+   .navigation form button:hover {
+       color: var(--hoverColor);
+   }
+   
+   .navigation form button:active {
+       color: blue;
    }

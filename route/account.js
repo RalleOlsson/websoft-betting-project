@@ -8,12 +8,14 @@ var router = express.Router();
 
 
 router.get('/', checkAuthenticated, (req, res) => {
-    var data = {};
-
-    res.render("account", data);
+    res.redirect('/account/' + req.user.userId);
 });
 
-
+router.get('/:userId(*)', checkAuthenticated, (req, res) => {
+    var data = {};
+    data.user = req.user;
+    res.render("account", data);
+});
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

@@ -9,33 +9,35 @@
 
 <body>
 
-    <%- include('view/header'); -%>
+    <div class="logo">
+        <img src="../img/logo.png" class="logo" alt="logo" width="350" height="150">
+    </div>
 
-        <% if (messages.error) { %>
-            <%= messages.error %>
-                <% } %>
-                    <div class="loginPage">
-                        <form class="loginLabel" action="/login" method="POST">
-                            <div class="loginLabel">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="loginLabel">
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="loginLabel">
-                                <label for="password">Password</label>
-                            </div>
-                            <div class="loginLabel">
-                                <input type="password" id="password" name="password" required>
-                            </div>
-                            <div class="loginLabel">
-                                <button class="loginButton" type="submit">Login</button>
-                            </div>
-                            <div class="loginLabel">
-                                <a href="/Register">Register</a>
-                            </div>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+            <% } %>
+                <div class="loginPage">
+                    <form class="loginLabel" action="/login" method="POST">
+                        <div class="loginLabel">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="loginLabel">
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="loginLabel">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="loginLabel">
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="loginLabel">
+                            <button class="loginButton" type="submit">Login</button>
+                        </div>
+                        <div class="loginLabel">
+                            <a href="/Register">Register</a>
+                        </div>
 
-                        </form>
+                    </form>
 
-                    </div>
+                </div>
 </body>
