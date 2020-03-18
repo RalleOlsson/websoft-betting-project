@@ -8,20 +8,31 @@
 </head>
 
 <body>
-
+    <div class="grid-item header-grid-item">
+        <%- include('view/header'); -%>
+    </div>
     <div class="grid-container-account">
-        <div class="grid-item">
-            <%- include('view/header'); -%>
+
+        <div class="grid-item account-grid-item">
+            <div>
+                <h2>
+                    <%=user.email %>
+                </h2>
+                <p>
+                    <%=user.balance %>
+                </p>
+
+                <p>
+                    Här skriver vi ut alla bets denna user har "lagt" och som sen kan acceptera eller ta bort bet........................................................................................
+                </p>
+
+            </div>
         </div>
-
-        <div class="grid-item">
-
-        </div>
-
-        <div class="grid-item">
+    </div>
+    <div class="account-footer-wrap">
+        <div class="grid-item footer-grid-item">
             <%- include('view/footer'); -%>
         </div>
     </div>
-
 
 </body>

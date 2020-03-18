@@ -166,7 +166,7 @@ Changing colors of links, both wehn visited and before
    /* visited link */
    
    a:visited {
-       color: green;
+       color: var(--textColor);
    }
    /* mouse over link */
    
@@ -176,7 +176,7 @@ Changing colors of links, both wehn visited and before
    /* selected link */
    
    a:active {
-       color: blue;
+       color: var(--primaryColor);
    }
    /* 
 
@@ -364,7 +364,12 @@ Tabs for header
        padding: 1em 0px;
    }
    
+   .navigation form {
+       padding: 20px;
+   }
+   
    .navigation a {
+       padding: 20px;
        text-decoration: none;
    }
    
@@ -388,4 +393,23 @@ Tabs for header
    
    .navigation form button:active {
        color: blue;
+   }
+   
+   .grid-container-account {
+       display: grid;
+       color: var(--textColor);
+       grid-template-columns: auto 40% auto;
+       background-color: var(--backgroundPrimary);
+       min-height: 100%;
+       position: relative;
+   }
+   
+   .account-grid-item {
+       grid-column-start: 2;
+       grid-column-end: 3;
+       background-color: var(--backgroundSecondary);
+   }
+   
+   .account-footer-wrap {
+       bottom: 0;
    }
