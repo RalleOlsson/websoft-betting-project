@@ -4,6 +4,9 @@
         <div class="navigation">
             <a href="/home" alt="Home">Home</a>
             <a href="/account" alt="Account">Account</a>
+            <% if (isAdmin === 1) {%>
+                <a href="/admin" alt="Admin">Admin</a>
+                <% } %>
         </div>
         <div class="user">
 

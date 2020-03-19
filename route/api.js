@@ -48,7 +48,7 @@ function findWithAttr(array, attr, value) {
     return -1;
 }
 
-router.get('/csgo/matches/:matchId(*)', (req, res) => {
+router.get('/matches/:matchId(*)/csgo', (req, res) => {
     const { matchId } = req.params;
 
     HLTV.getMatch({ id: matchId }).then(response => {
@@ -56,14 +56,14 @@ router.get('/csgo/matches/:matchId(*)', (req, res) => {
     });
 });
 
-router.get('/csgo/matchesraw', (req, res) => {
+router.get('/matchesraw/csgo', (req, res) => {
 
     HLTV.getMatches().then((response) => {
         res.json(response);
     });
 });
 
-router.get('/csgo/matches', (req, res) => {
+router.get('/matches/csgo', (req, res) => {
 
     HLTV.getMatches().then((response) => {
 
@@ -95,7 +95,7 @@ router.get('/csgo/matches', (req, res) => {
     });
 });
 
-router.get('/csgo/bets/user/:userId(*)', (req, res) => {
+router.get('/bets/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
     con.query("SELECT * FROM bet WHERE user_userId =" + userId, function(err, result) {
@@ -106,7 +106,7 @@ router.get('/csgo/bets/user/:userId(*)', (req, res) => {
     });
 });
 
-router.get('/csgo/bets/:betId(*)', (req, res) => {
+router.get('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
 
     if (betId !== "" && !(isNaN(betId))) {
@@ -122,7 +122,7 @@ router.get('/csgo/bets/:betId(*)', (req, res) => {
     }
 });
 
-router.get('/csgo/bets', (req, res) => {
+router.get('/bets', (req, res) => {
 
     con.query("SELECT * FROM bet", function(err, result) {
 
@@ -132,15 +132,14 @@ router.get('/csgo/bets', (req, res) => {
     });
 });
 
-router.post('/csgo/bets', checkAuthenticated, (req, res) => {
+router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
 
-    console.log(req.body.sql);
-    console.log(Object.keys(req.body));
+    const { game } = req.params;
 
     con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
         if (!result.length) {
             var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
-                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + 'csgo' + "', " + "'" + req.body.betPlaced + "'" + ")";
+                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
             con.query(sql, function(err, result) {
                 if (err) throw (err);
 
@@ -158,22 +157,13 @@ router.post('/csgo/bets', checkAuthenticated, (req, res) => {
 
 });
 
-router.get('/csgo/odds/:matchId(*)', (req, res) => {
-    const { matchId } = req.params;
-    con.query("SELECT * FROM bet_webv2.match WHERE matchId = " + matchId, function(err, result) {
-        res.json(result);
-    });
-});
-
-router.get('/ow/odds/:matchId(*)', (req, res) => {
+router.get('/odds/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
 
     con.query("SELECT * FROM bet_webv2.match WHERE matchId = " + matchId, function(err, result) {
         res.json(result);
     });
 });
-
-
 
 /** shows a hardcoded list of available commands */
 router.get('/', (req, res) => {

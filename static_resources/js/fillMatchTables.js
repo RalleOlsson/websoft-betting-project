@@ -77,7 +77,7 @@ function fillMatchTables(jsonData, game) {
 
             console.log(JSON.stringify(data));
 
-            fetch('http://localhost:1337/api/' + game + '/bets', {
+            fetch('http://localhost:1337/api/bets/' + game.toLowerCase(), {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
@@ -95,7 +95,7 @@ function fillMatchTables(jsonData, game) {
 
         const odd1 = odds1;
         const odd2 = odds2;
-        fetch('http://localhost:1337/api/' + game + '/odds/' + matchId)
+        fetch('http://localhost:1337/api/odds/' + matchId)
             .then((response) => {
                 return response.json();
             }).then((jsonData) => {
