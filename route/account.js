@@ -12,9 +12,11 @@ router.get('/', checkAuthenticated, (req, res) => {
 });
 
 router.get('/:userId(*)', checkAuthenticated, (req, res) => {
-    var data = {};
-    data.user = req.user;
-    res.render("account", data);
+
+    res.render("account", {
+        email: req.user.email,
+        userId: req.user.userId
+    });
 });
 
 function checkAuthenticated(req, res, next) {

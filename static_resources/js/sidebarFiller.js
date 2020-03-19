@@ -9,7 +9,6 @@ function fillSidebar(game) {
                 eventBar.innerHTML = "";
                 fetchEvents(game);
             }
-
             sidebarHeader.innerHTML = "CSGO";
             break;
 
@@ -74,7 +73,6 @@ function fillSidebar(game) {
                         ]
                     }
                 ];
-                console.log(data[0]);
                 addButtons(data, 'ow');
                 sidebarHeader.innerHTML = "OW";
                 break;
@@ -132,7 +130,7 @@ function fetchEvents(game) {
                 return response.json();
             }).then((jsonData) => {
                 gamesData[game] = jsonData;
-                addButtons(jsonData, game);
+                addButtons(gamesData[game], game);
             });
     }
     /** if data is already loaded */
@@ -150,15 +148,14 @@ function workInProgress() {
     matchesHeader.style.marginTop = "0px";
     matchesHeader.className = "content-row-match";
     matchesHeader.style.textAlign = "center";
-    matchesHeader.style.borderTopRightRadius = "var(--cornerRadius)";
-    matchesHeader.style.borderTopLeftRadius = "var(--cornerRadius)";
+    matchesHeader.style.borderRadius = "var(--cornerRadius)";
     matchesHeader.style.backgroundColor = "var(--primaryColor)";
 
 
     var matchesText = document.createElement("div");
     matchesText.style.gridColumnStart = "1";
     matchesText.style.gridColumnEnd = "5";
-    matchesText.innerHTML = "Work in progress";
+    matchesText.innerHTML = "No data";
 
     matchesHeader.appendChild(matchesText);
 

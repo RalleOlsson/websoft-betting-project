@@ -52,7 +52,6 @@ router.get('/register', checkNotAthenticated, (req, res) => {
 
 router.post('/register', checkNotAthenticated, async(req, res) => {
     try {
-
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
         var con = mysql.createConnection({

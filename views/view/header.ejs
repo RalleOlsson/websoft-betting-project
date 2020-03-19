@@ -1,17 +1,28 @@
 <header>
 
-    <nav class="navigation">
+    <nav class="site-header">
+        <div class="navigation">
+            <a href="/home" alt="Home">Home</a>
+            <a href="/account" alt="Account">Account</a>
+        </div>
+        <div class="user">
 
-        <a href="/home" alt="Home">Home</a>
-        <a href="/account" alt="Account">Account</a>
-        <form action="/logout?_method=DELETE" method="POST">
-            <button type="submit">logout</button>
-        </form>
+            <span style="display: none;">
+                userId: <span id="userId"><%= userId %></span>
+            </span>
 
+            <span> 
+                email: <span id="email"><%= email %></span>
+            </span>
+
+            <form action="/logout?_method=DELETE " method="POST ">
+                <button type="submit ">logout</button>
+            </form>
+        </div>
     </nav>
 
-    <div class="logo">
-        <img src="../img/logo.png" class="logo" alt="logo" width="350" height="150">
+    <div class="logo ">
+        <img src="../img/logo.png " class="logo " alt="logo " width="350 " height="150 ">
     </div>
 
 </header>

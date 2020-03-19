@@ -1,4 +1,6 @@
 function fillMatchTables(jsonData, game) {
+
+
     tabContent.innerHTML = "";
 
     console.log(jsonData);
@@ -61,14 +63,39 @@ function fillMatchTables(jsonData, game) {
 
         }
 
-        const id = match.id;
+        const matchId = match.id;
         row.onclick = function() {
-            alert(id + "");
-        }
+            var userId = document.getElementById("userId").innerText;
+            console.log(userId);
+            var data = {
+                userId: userId,
+                matchId: matchId,
+                betPlaced: 'none'
+            };
+
+            console.log(data.sql);
+
+            console.log(JSON.stringify(data));
+
+            fetch('http://localhost:1337/api/' + game + '/bets', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then((response) => {
+                    return response.json();
+                }).then((json) => {
+                    alert(json);
+                });
+
+
+        };
 
         const odd1 = odds1;
         const odd2 = odds2;
-        fetch('http://localhost:1337/api/' + game + '/odds/' + id)
+        fetch('http://localhost:1337/api/' + game + '/odds/' + matchId)
             .then((response) => {
                 return response.json();
             }).then((jsonData) => {

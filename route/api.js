@@ -6,7 +6,9 @@ var mysql = require("mysql");
 const { HLTV } = require('hltv');
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
+router.use(bodyParser.json());
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -130,6 +132,32 @@ router.get('/csgo/bets', (req, res) => {
     });
 });
 
+router.post('/csgo/bets', checkAuthenticated, (req, res) => {
+
+    console.log(req.body.sql);
+    console.log(Object.keys(req.body));
+
+    con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
+        if (!result.length) {
+            var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
+                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + 'csgo' + "', " + "'" + req.body.betPlaced + "'" + ")";
+            con.query(sql, function(err, result) {
+                if (err) throw (err);
+
+                res.json("bet was added");
+            });
+        }
+    })
+
+    /*
+    con.query(req.body.sql, function(err, result) {
+        if (err) res.send(err);
+
+        res.json("bet was added");
+    });*/
+
+});
+
 router.get('/csgo/odds/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
     con.query("SELECT * FROM bet_webv2.match WHERE matchId = " + matchId, function(err, result) {
@@ -145,10 +173,20 @@ router.get('/ow/odds/:matchId(*)', (req, res) => {
     });
 });
 
+
+
 /** shows a hardcoded list of available commands */
 router.get('/', (req, res) => {
     res.render("api");
 });
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    res.redirect('/login');
+}
 
 
 module.exports = router;

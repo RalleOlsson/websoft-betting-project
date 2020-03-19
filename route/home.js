@@ -9,9 +9,11 @@ var router = express.Router();
 
 
 router.get('/', checkAuthenticated, (req, res) => {
-    var data = {};
 
-    res.render("home", data);
+    res.render("home", {
+        email: req.user.email,
+        userId: req.user.userId
+    });
 });
 
 router.get("/about", checkAuthenticated, (req, res) => {

@@ -1,394 +1,457 @@
-   /*@import 'https://fonts.googleapis.com/css?family=Raleway';*/
-   /*
+/*@import 'https://fonts.googleapis.com/css?family=Raleway';*/
+
+
+/*
 Global variables
 */
-   
-    :root {
-       --backgroundPrimary: #23272A;
-       --backgroundSecondary: #383B3D;
-       --primaryColor: rgba(128, 0, 128, 0.8);
-       --textColor: rgba(255, 255, 255, 0.8);
-       --borderColor: rgba(255, 255, 255, 0.2);
-       --hoverColor: rgba(142, 133, 133, 0.8);
-       --rowHeight: 14px;
-       --cornerRadius: 6px;
-   }
-   
-   body {
-       background-color: var(--backgroundPrimary);
-       max-width: 100%;
-       margin: 0px;
-       width: 100%;
-       height: 100%;
-       font-family: arial;
-   }
-   
-   .grid-container-home {
-       display: grid;
-       color: var(--textColor);
-       grid-template-columns: 20% 1fr;
-       /* 1fr fills the remaning space */
-       grid-template-rows: auto auto 1fr auto;
-       background-color: var(--backgroundPrimary);
-       min-height: 100%;
-       column-gap: 10px;
-       row-gap: 10px;
-   }
-   
-   .grid-container-about {
-       display: grid;
-       color: var(--textColor);
-       grid-template-columns: 50% auto;
-       background-color: var(--backgroundPrimary);
-       min-height: 100%;
-       column-gap: 10px;
-       row-gap: 10px;
-   }
-   /*
+
+ :root {
+    --backgroundPrimary: #23272A;
+    --backgroundSecondary: #383B3D;
+    --primaryColor: rgba(128, 0, 128, 0.8);
+    --textColor: rgba(255, 255, 255, 0.8);
+    --borderColor: rgba(255, 255, 255, 0.2);
+    --hoverColor: rgba(142, 133, 133, 0.8);
+    --rowHeight: 14px;
+    --cornerRadius: 6px;
+}
+
+body {
+    background-color: var(--backgroundPrimary);
+    max-width: 100%;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: arial;
+}
+
+.grid-container-home {
+    display: grid;
+    color: var(--textColor);
+    grid-template-columns: 20% 1fr;
+    /* 1fr fills the remaning space */
+    grid-template-rows: auto auto 1fr auto;
+    background-color: var(--backgroundPrimary);
+    min-height: 100%;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.grid-container-about {
+    display: grid;
+    color: var(--textColor);
+    grid-template-columns: 50% auto;
+    background-color: var(--backgroundPrimary);
+    min-height: 100%;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+
+/*
 A general grid item styling that should affect all 4 grid items
 Needs to be above other grid items so it can be overriden
 */
-   
-   .grid-item {
-       width: 100%;
-       text-align: center;
-       border-radius: var(--cornerRadius);
-   }
-   /*
+
+.grid-item {
+    width: 100%;
+    text-align: center;
+    border-radius: var(--cornerRadius);
+}
+
+
+/*
 Specific grid items
 */
-   
-   .header-grid-item {
-       grid-area: header;
-       grid-column-start: 1;
-       grid-column-end: 3;
-       grid-row-start: 1;
-       grid-row-end: 2;
-       text-align: center;
-   }
-   
-   .logo {
-       margin-top: 20px;
-       margin-left: auto;
-       margin-right: auto;
-       text-align: center;
-   }
-   
-   .content-nav-grid-item {
-       grid-area: nav;
-       grid-column-start: 1;
-       grid-column-end: 3;
-       grid-row-start: 2;
-       grid-row-end: 3;
-       font-size: 20px;
-   }
-   
-   .sidebar-grid-item {
-       grid-area: sidebar;
-       grid-column-start: 1;
-       grid-column-end: 2;
-       grid-row-start: 3;
-       grid-row-end: 4;
-       background-color: var(--backgroundSecondary);
-       font-size: 20px;
-       padding-bottom: 46px;
-   }
-   
-   .main-grid-item {
-       grid-area: main;
-       grid-column-start: 2;
-       grid-column-end: 3;
-       grid-row-start: 3;
-       grid-row-end: 4;
-   }
-   
-   .footer-grid-item {
-       grid-area: footer;
-       grid-column-start: 1;
-       grid-column-end: 3;
-       grid-row-start: 4;
-       grid-row-end: 5;
-       /*testing*/
-       font-size: 18px;
-       padding-bottom: 20px;
-   }
-   
-   .about-grid-item-rasmus {
-       grid-column-start: 1;
-       grid-column-end: 2;
-       background-color: var(--backgroundSecondary);
-   }
-   
-   .about-grid-item-johan {
-       grid-column-start: 2;
-       grid-column-end: 3;
-       background-color: var(--backgroundSecondary);
-   }
-   /*testing purposes*/
-   /*
+
+.header-grid-item {
+    grid-area: header;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.content-nav-grid-item {
+    grid-area: nav;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 20px;
+}
+
+.sidebar-grid-item {
+    grid-area: sidebar;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    background-color: var(--backgroundSecondary);
+    font-size: 20px;
+    padding-bottom: 46px;
+}
+
+.main-grid-item {
+    grid-area: main;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.footer-grid-item {
+    grid-area: footer;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    /*testing*/
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.about-grid-item-rasmus {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: var(--backgroundSecondary);
+}
+
+.about-grid-item-johan {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: var(--backgroundSecondary);
+}
+
+
+/*testing purposes*/
+
+
+/*
    footer css
    */
-   
-   .footerLinks {
-       list-style-type: none;
-       padding: 0px 0px;
-   }
-   
-   .footerLinks li {
-       padding: 10px;
-   }
-   
-   .footer-grid-item-left {
-       font-size: 12px;
-       grid-column-start: 1;
-       grid-column-end: 2;
-   }
-   
-   .footer-grid-item-right {
-       grid-column-start: 2;
-       grid-column-end: 3;
-   }
-   
-   h1 {
-       margin-left: auto;
-       margin-right: auto;
-       text-align: center;
-   }
-   /*
+
+.footerLinks {
+    list-style-type: none;
+    padding: 0px 0px;
+}
+
+.footerLinks li {
+    padding: 10px;
+}
+
+.footer-grid-item-left {
+    font-size: 12px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.footer-grid-item-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/*
 Changing colors of links, both wehn visited and before
 */
-   /* unvisited link */
-   
-   a:link {
-       color: rgba(255, 255, 255, 0.8);
-   }
-   /* visited link */
-   
-   a:visited {
-       color: green;
-   }
-   /* mouse over link */
-   
-   a:hover {
-       color: white;
-   }
-   /* selected link */
-   
-   a:active {
-       color: var(--hoverColor);
-   }
-   /* 
+
+
+/* unvisited link */
+
+a:link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* visited link */
+
+a:visited {
+    color: green;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: white;
+}
+
+
+/* selected link */
+
+a:active {
+    color: var(--hoverColor);
+}
+
+
+/* 
 
 Tabs for header 
 
 */
-   
-   .tabLinks {
-       overflow: hidden;
-       font-size: 0px;
-   }
-   /* 
+
+.tabLinks {
+    overflow: hidden;
+    font-size: 0px;
+}
+
+
+/* 
    Style for header buttons
    */
-   
-   .tabLink {
-       position: relative;
-       background-color: var(--backgroundSecondary);
-       color: var(--textColor);
-       outline: none;
-       border: none;
-       cursor: pointer;
-       padding: var(--rowHeight) 16px;
-       font-size: 17px;
-       width: 100%;
-       max-width: 25%;
-   }
-   /*
+
+.tabLink {
+    position: relative;
+    background-color: var(--backgroundSecondary);
+    color: var(--textColor);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--rowHeight) 16px;
+    font-size: 17px;
+    width: 100%;
+    max-width: 25%;
+}
+
+
+/*
    Animation for header buttons
    */
-   
-   .tabLink:after {
-       position: absolute;
-       transition: .3s;
-       content: '';
-       width: 0;
-       left: 50%;
-       bottom: 0;
-       height: 3px;
-       background: var(--primaryColor);
-   }
-   
-   .tabLink:hover {
-       background-color: var(--hoverColor);
-       cursor: pointer;
-   }
-   
-   .tabLink:hover:after {
-       width: 100%;
-       left: 0;
-   }
-   
-   #eventBar {
-       font-size: 0px;
-       background-color: var(--backgroundPrimary);
-       width: auto;
-       padding-bottom: 1px;
-   }
-   
-   .sideBarButton {
-       white-space: normal;
-       margin-top: 1px;
-       background-color: var(--backgroundSecondary);
-       color: var(--textColor);
-       border: none;
-       outline: none;
-       cursor: pointer;
-       padding: var(--rowHeight);
-       /*border-bottom: 1px solid var(--borderColor);
+
+.tabLink:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: var(--primaryColor);
+}
+
+.tabLink:hover {
+    background-color: var(--hoverColor);
+    cursor: pointer;
+}
+
+.tabLink:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+#eventBar {
+    font-size: 0px;
+    background-color: var(--backgroundPrimary);
+    width: auto;
+    padding-bottom: 1px;
+}
+
+.sideBarButton {
+    white-space: normal;
+    margin-top: 1px;
+    background-color: var(--backgroundSecondary);
+    color: var(--textColor);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: var(--rowHeight);
+    /*border-bottom: 1px solid var(--borderColor);
        border-top: 1px solid var(--borderColor);*/
-       font-size: 17px;
-       width: 100%;
-   }
-   
-   .sideBarButton:hover {
-       background-color: var(--hoverColor);
-   }
-   
-   .notransition {
-       transition: none !important;
-   }
-   /** main content tags*/
-   
-   #tabcontent {
-       text-align: center;
-       margin-left: auto;
-       margin-right: auto;
-       margin: 0px;
-   }
-   
-   .content-row-match {
-       cursor: pointer;
-       display: grid;
-       grid-template-columns: 1fr 50px 50px 1fr;
-       grid-template-rows: auto;
-       column-gap: 0px;
-       margin-top: 1px;
-       background-color: var(--backgroundSecondary);
-   }
-   
-   .content-row-match div {
-       padding: var(--rowHeight) 0px;
-   }
-   
-   .content-row-match:hover {
-       background-color: var(--hoverColor);
-   }
-   
-   .content-row-item {
-       max-width: 100%;
-   }
-   
-   .teams {
-       grid-column-start: 1;
-       grid-column-end: 2;
-   }
-   
-   .odds1 {
-       grid-column-start: 2;
-       grid-column-end: 3;
-   }
-   
-   .odds2 {
-       grid-column-start: 3;
-       grid-column-end: 4;
-   }
-   
-   .matchTime {
-       grid-column-start: 4;
-       grid-column-end: 5;
-       border-right: 0px;
-   }
-   /*
+    font-size: 17px;
+    width: 100%;
+}
+
+.sideBarButton:hover {
+    background-color: var(--hoverColor);
+}
+
+.notransition {
+    transition: none !important;
+}
+
+
+/** main content tags*/
+
+#tabcontent {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0px;
+}
+
+.content-row-match {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 50px 50px 1fr;
+    grid-template-rows: auto;
+    column-gap: 0px;
+    margin-top: 1px;
+    background-color: var(--backgroundSecondary);
+}
+
+.content-row-match div {
+    padding: var(--rowHeight) 0px;
+}
+
+.content-row-match:hover {
+    background-color: var(--hoverColor);
+}
+
+.content-row-item {
+    max-width: 100%;
+}
+
+.teams {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.odds1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.odds2 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.matchTime {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    border-right: 0px;
+}
+
+
+/*
    login css
    */
-   
-   .loginPage {
-       color: var(--textColor);
-       width: min-content;
-       border-radius: 10px;
-       background-color: var(--backgroundSecondary);
-       margin-left: auto;
-       margin-right: auto;
-       padding-top: 20px;
-       padding-left: 100px;
-       padding-right: 100px;
-       padding-bottom: 20px;
-   }
-   
-   .loginLabel {
-       padding: 5px;
-   }
-   
-   .loginButton {
-       color: var(--textColor);
-       padding: 10px 30px;
-       font-size: 17px;
-       border: none;
-       border-radius: 3px;
-       background-color: var(--primaryColor);
-   }
-   /*
+
+.loginPage {
+    color: var(--textColor);
+    width: min-content;
+    border-radius: 10px;
+    background-color: var(--backgroundSecondary);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+}
+
+.loginLabel {
+    padding: 5px;
+}
+
+.loginButton {
+    color: var(--textColor);
+    padding: 10px 30px;
+    font-size: 17px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--primaryColor);
+}
+
+
+/*
    About css items
    */
-   
-   .aboutHeader {
-       border-radius: 10px;
-       padding-top: 20px;
-       padding-bottom: 20px;
-       margin: 0px 0px;
-       margin-bottom: 10px;
-       color: var(--textColor);
-       background-color: var(--backgroundSecondary);
-   }
-   
-   .navigation {
-       position: relative;
-       display: inline-block;
-       grid-template-columns: auto auto auto;
-       background-color: var(--backgroundSecondary);
-       margin-left: auto;
-       margin-right: auto;
-       text-align: center;
-       width: 100%;
-       font-size: 16px;
-       padding: 1em 0px;
-   }
-   
-   .navigation a {
-       text-decoration: none;
-       padding: 1em;
-   }
-   
-   .navigation form {
-       position: absolute;
-       right: 5%;
-       display: inline-block;
-   }
-   
-   .navigation form button {
-       cursor: pointer;
-       border: none;
-       outline: none;
-       background-color: var(--backgroundSecondary);
-       font-size: 1em;
-       padding: 0px 0px;
-       color: var(--textColor);
-   }
-   
-   .navigation form button:hover {
-       color: white;
-   }
-   
-   .navigation form button:active {
-       color: var(--hoverColor);
-   }
+
+.aboutHeader {
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0px 0px;
+    margin-bottom: 10px;
+    color: var(--textColor);
+    background-color: var(--backgroundSecondary);
+}
+
+.site-header {
+    position: relative;
+    display: inline-block;
+    background-color: var(--backgroundSecondary);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    padding: 0px;
+}
+
+.navigation {
+    display: inline-block;
+    background-color: var(--backgroundSecondary);
+    text-align: center;
+    text-decoration: none;
+    padding: 16px;
+}
+
+.navigation a {
+    text-decoration: none;
+    padding: 0px 1em;
+}
+
+.user {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    background-color: var(--backgroundSecondary);
+    font-size: 0px;
+    padding: 15px 4px;
+}
+
+span {
+    font-size: 16px;
+    padding: 0px 2px;
+    display: inline-block;
+    color: var(--textColor);
+}
+
+#userId {}
+
+#email {}
+
+.user form {
+    display: inline-block;
+    height: 100%;
+    padding: 0px 1em;
+    font-size: 16px;
+}
+
+.user form button {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: var(--backgroundSecondary);
+    font-size: 1em;
+    padding: 0px;
+    height: 100%;
+    color: var(--textColor);
+}
+
+.user form button:hover {
+    color: white;
+}
+
+.user form button:active {
+    color: var(--hoverColor);
+}
