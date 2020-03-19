@@ -463,7 +463,7 @@ span {
 .grid-container-account {
     display: grid;
     color: var(--textColor);
-    grid-template-columns: auto 40% auto;
+    grid-template-columns: auto auto auto;
     background-color: var(--backgroundPrimary);
     min-height: 100%;
     position: relative;
@@ -480,22 +480,30 @@ span {
 }
 
 .accountTable {
+    border-spacing: 0;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
     border-collapse: collapse;
-    border: 1px solid;
-    width: 100%;
+    white-space: nowrap;
+    border-style: hidden;
+    box-shadow: 0 0 0 3px #ccc;
 }
 
-.accountTable tr:nth-child(even) {
+.accountHead {
+    border: 2px solid #ccc;
+    border-radius: 5px;
     background-color: var(--primaryColor);
+    text-align: center;
 }
 
 .accountTable td {
-    border: 1px solid;
+    border: 2px solid;
     padding: 8px;
 }
 
 .accountTable th {
-    border: 1px solid;
+    border: 2px solid;
     padding: 8px;
 }
 
