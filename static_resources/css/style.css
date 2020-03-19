@@ -487,11 +487,11 @@ span {
     border-collapse: collapse;
     white-space: nowrap;
     border-style: hidden;
-    box-shadow: 0 0 0 3px #ccc;
+    box-shadow: 0 0 0 3px var(--textColor);
 }
 
 .accountHead {
-    border: 2px solid #ccc;
+    border: 2px solid var(--textColor);
     border-radius: 5px;
     background-color: var(--primaryColor);
     text-align: center;
@@ -508,7 +508,8 @@ span {
 }
 
 .accountTable tr:hover {
-    background-color: var(--primaryColor);
+    background-color: var(--hoverColor);
+    border-radius: 5px;
 }
 
 .accountTable th {
