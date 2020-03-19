@@ -17,7 +17,10 @@ router.get('/', checkAuthenticated, (req, res) => {
 });
 
 router.get("/about", checkAuthenticated, (req, res) => {
-    res.render("about");
+    res.render("about", {
+        email: req.user.email,
+        userId: req.user.userId
+    });
 });
 
 function checkAuthenticated(req, res, next) {

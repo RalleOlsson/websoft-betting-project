@@ -175,13 +175,14 @@ Changing colors of links, both wehn visited and before
 
 a:link {
     color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
 }
 
 
 /* visited link */
 
 a:visited {
-    color: green;
+    color: var(--textColor);
 }
 
 
@@ -425,10 +426,6 @@ span {
     color: var(--textColor);
 }
 
-#userId {}
-
-#email {}
-
 .user form {
     display: inline-block;
     height: 100%;
@@ -454,4 +451,23 @@ span {
 
 .user form button:active {
     color: var(--hoverColor);
+}
+
+.grid-container-account {
+    display: grid;
+    color: var(--textColor);
+    grid-template-columns: auto 40% auto;
+    background-color: var(--backgroundPrimary);
+    min-height: 100%;
+    position: relative;
+}
+
+.account-grid-item {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: var(--backgroundSecondary);
+}
+
+.account-footer-wrap {
+    bottom: 0;
 }
