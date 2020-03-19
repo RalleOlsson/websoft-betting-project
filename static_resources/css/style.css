@@ -478,3 +478,33 @@ span {
 .account-footer-wrap {
     bottom: 0;
 }
+
+.accountTable {
+    border-collapse: collapse;
+    border: 1px solid;
+    width: 100%;
+}
+
+.accountTable tr:nth-child(even) {
+    background-color: var(--primaryColor);
+}
+
+.accountTable td {
+    border: 1px solid;
+    padding: 8px;
+}
+
+.accountTable th {
+    border: 1px solid;
+    padding: 8px;
+}
+
+.accountTable tr:hover {
+    background-color: var(--primaryColor);
+}
+
+.accountTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
