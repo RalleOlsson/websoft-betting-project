@@ -30,38 +30,42 @@
                     <%
                     for(var i = 0; i < matchData.length; i++){
                     %>
-                        <td>
-                            <% matchData[i]; %>
-
-                        </td>
-                        <%
-                }
-                    %>
+                        <tr>
                             <td>
-                                odds1
+                                <%=matchData[i].team1name; %>
                             </td>
                             <td>
-                                odds2
+                                <%=matchData[i].team1odds %>
                             </td>
                             <td>
-                                lag2
+                                <%=matchData[i].team2odds %>
+                            </td>
+                            <td>
+                                <%=matchData[i].team2name %>
                             </td>
                             <td>
                                 <label for="stake">Stake</label>
                                 <input type="text">
                             </td>
                             <td>
-                                <select class="1or2">
-                            <option value="lag1">
-                                lag ett
+                                <select class="selectTeam">
+                            <option value="team one">
+                                <%=matchData[i].team1name; %>
                             </option>
                             <option value="lag2">
-                                lag två
+                                
+                                <%=matchData[i].team2name; %>
                             </option>
                         </select>
                                 <input type="button" value="place"></input>
                                 <button>delete</button>
                             </td>
+
+                        </tr>
+                        <%
+                }
+                    %>
+
                 </table>
 
                 <p>
