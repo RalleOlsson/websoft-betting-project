@@ -124,8 +124,9 @@ function addButtons(jsonData, game) {
 
 function fetchEvents(game) {
     if (!gamesData[game]) {
-        console.log("fetching: api/" + game + "/matches");
-        fetch('http://localhost:1337/api/' + game + '/matches')
+        var url = 'http://localhost:1337/api/matches/' + game;
+        console.log("fetching: " + url);
+        fetch(url)
             .then((response) => {
                 return response.json();
             }).then((jsonData) => {
