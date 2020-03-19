@@ -24,14 +24,20 @@ con.connect(function(err) {
 
 function fillDataBase(dataset) {
     for (var i = 0; i < dataset.length; i++) {
+        var str = "";
+        if ((typeof dataset[i].team1) !== 'undefined') {
+            str = "INSERT IGNORE INTO bet_webv2.match (matchId, team1odds, team2odds, team1name, team2name) VALUES" +
+                "(" + dataset[i].id + ", '" +
+                (Math.floor(Math.random() * 301) + 100) / 100 + "', '" +
+                (Math.floor(Math.random() * 301) + 100) / 100 + "'," +
+                " '" + dataset[i].team1.name + "'," +
+                " '" + dataset[i].team2.name + "')"
 
-        con.query("INSERT IGNORE INTO bet_webv2.match (matchId, team1odds, team2odds) VALUES" +
-            "(" + dataset[i].id + ", '" +
-            (Math.floor(Math.random() * 301) + 100) / 100 + "', '" +
-            (Math.floor(Math.random() * 301) + 100) / 100 + "')",
-            function(err, result) {
-                if (err) throw err;
-            });
+            con.query(str,
+                function(err, result) {
+                    if (err) throw err;
+                });
+        }
     }
 };
 
@@ -98,7 +104,7 @@ router.get('/matches/csgo', (req, res) => {
 router.get('/bets/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
-    con.query("SELECT * FROM bet WHERE user_userId =" + userId, function(err, result) {
+    con.query("SELECT * FROM bet WHERE user_userId =" + userId + " AND status != 'finished'", function(err, result) {
 
         if (err) throw err;
 
