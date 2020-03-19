@@ -463,7 +463,7 @@ span {
 .grid-container-account {
     display: grid;
     color: var(--textColor);
-    grid-template-columns: auto 40% auto;
+    grid-template-columns: auto 45% auto;
     background-color: var(--backgroundPrimary);
     min-height: 100%;
     position: relative;
@@ -480,13 +480,17 @@ span {
 }
 
 .accountTable {
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
     border-collapse: collapse;
     border: 1px solid;
-    width: 100%;
+    white-space: nowrap;
 }
 
-.accountTable tr:nth-child(even) {
+.accountHead {
     background-color: var(--primaryColor);
+    text-align: center;
 }
 
 .accountTable td {
