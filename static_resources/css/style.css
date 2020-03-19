@@ -512,6 +512,10 @@ span {
     border-radius: 5px;
 }
 
+.accountTable td:hover {
+    border-radius: 5px;
+}
+
 .accountTable th {
     padding-top: 12px;
     padding-bottom: 12px;
