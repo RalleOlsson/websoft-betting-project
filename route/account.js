@@ -16,6 +16,7 @@ router.get('/:userId(*)', checkAuthenticated, (req, res) => {
     res.render("account", {
         email: req.user.email,
         userId: req.user.userId,
+        isAdmin: req.user.isAdmin,
         balance: req.user.balance
     });
 });

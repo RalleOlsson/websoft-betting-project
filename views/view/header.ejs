@@ -4,6 +4,9 @@
         <div class="navigation">
             <a href="/home" alt="Home">Home</a>
             <a href="/account" alt="Account">Account</a>
+            <% if (isAdmin === 1) {%>
+                <a href="/admin" alt="Admin">Admin</a>
+                <% } %>
         </div>
         <div class="user">
 
@@ -15,14 +18,14 @@
                 email: <span id="email"><%= email %></span>
             </span>
 
-            <form action="/logout?_method=DELETE " method="POST ">
-                <button type="submit ">logout</button>
+            <form action="/logout?_method=DELETE" method="POST">
+                <button type="submit">logout</button>
             </form>
         </div>
     </nav>
 
-    <div class="logo ">
-        <img src="../img/logo.png " class="logo " alt="logo " width="350 " height="150 ">
+    <div class="logo">
+        <img src="../img/logo.png" class="logo" alt="logo" width="350" height="150">
     </div>
 
 </header>

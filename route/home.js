@@ -12,14 +12,16 @@ router.get('/', checkAuthenticated, (req, res) => {
 
     res.render("home", {
         email: req.user.email,
-        userId: req.user.userId
+        userId: req.user.userId,
+        isAdmin: req.user.isAdmin
     });
 });
 
 router.get("/about", checkAuthenticated, (req, res) => {
     res.render("about", {
         email: req.user.email,
-        userId: req.user.userId
+        userId: req.user.userId,
+        isAdmin: req.user.isAdmin
     });
 });
 
