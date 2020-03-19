@@ -26,24 +26,32 @@
                     <tr>
                         <td class="accountHead" colspan="6"> <b>Bets</b></td>
                     </tr>
-                    <td>
-                        lag1
-                    </td>
-                    <td>
-                        odds1
-                    </td>
-                    <td>
-                        odds2
-                    </td>
-                    <td>
-                        lag2
-                    </td>
-                    <td>
-                        <label for="stake">Stake</label>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <select class="1or2">
+
+                    <%
+                    for(var i = 0; i < matchData.length; i++){
+                    %>
+                        <td>
+                            <% matchData[i]; %>
+
+                        </td>
+                        <%
+                }
+                    %>
+                            <td>
+                                odds1
+                            </td>
+                            <td>
+                                odds2
+                            </td>
+                            <td>
+                                lag2
+                            </td>
+                            <td>
+                                <label for="stake">Stake</label>
+                                <input type="text">
+                            </td>
+                            <td>
+                                <select class="1or2">
                             <option value="lag1">
                                 lag ett
                             </option>
@@ -51,9 +59,9 @@
                                 lag två
                             </option>
                         </select>
-                        <input type="button" value="place"></input>
-                        <button>delete</button>
-                    </td>
+                                <input type="button" value="place"></input>
+                                <button>delete</button>
+                            </td>
                 </table>
 
                 <p>
