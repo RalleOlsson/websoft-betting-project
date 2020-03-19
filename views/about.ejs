@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -7,26 +8,35 @@
     <link rel="icon" href="../favicon.ico">
 </head>
 
+
 <body>
     <div class="grid-item header-grid-item">
         <%- include('view/header'); -%>
 
     </div>
 
-    <div style="margin: 0px 10px;">
-        <h1 class="aboutHeader">Team Name: ebet</h1>
+    <h1 class="aboutHeader">Team Name: ebet</h1>
 
-        <div class="grid-container-about">
-            <div class="grid-item about-grid-item-rasmus ">
+    <div class="grid-container-about">
+        <div class="grid-item about-grid-item-rasmus ">
 
-                <h2>Rasmus</h2>
-                <p><b>Focus Area:</b> jani luktar illa</p>
-            </div>
-            <div class="grid-item about-grid-item-johan ">
-                <h2>Johan</h2>
-                <p><b>Jani luktar värst</b></p>
-            </div>
+            <h2>Rasmus</h2>
+            <p><b>Focus Area:</b> jani luktar illa</p>
+        </div>
+        <div class="grid-item about-grid-item-johan ">
+            <h2>Johan</h2>
+            <p><b>Jani luktar värst</b></p>
+        </div>
+
+    </div>
+    <div class="account-footer-wrap">
+        <div class="grid-item footer-grid-item">
+            <%- include('view/footer'); -%>
         </div>
     </div>
 
+
+
 </body>
+
+</html>
