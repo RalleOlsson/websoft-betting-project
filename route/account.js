@@ -29,14 +29,18 @@ router.get('/:userId(*)', checkAuthenticated, (req, res) => {
                     return response.json();
                 }).then((data) => {
                     matchData[i] = {
-                        team1name: data.team1name,
-                        team2name: data.team2name,
-                        team1odds: data.team1odds,
-                        team2odds: data.team2odds
+                        matchId: data[0].matchId,
+                        team1name: data[0].team1name,
+                        team2name: data[0].team2name,
+                        team1odds: data[0].team1odds,
+                        team2odds: data[0].team2odds
                     }
+                    console.log("awaitF: ");
+                    console.log(matchData[i]);
                 });
             }
         }).then(() => {
+            console.log(matchData[0]);
             res.render("account", {
                 email: req.user.email,
                 userId: req.user.userId,

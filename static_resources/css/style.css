@@ -512,8 +512,12 @@ span {
     border-radius: 5px;
 }
 
-.accountTable td:hover {
-    border-radius: 5px;
+.accountTable tr:hover td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+.accountTable tr:hover td:last-child {
+    border-bottom-right-radius: 5px;
 }
 
 .accountTable th {

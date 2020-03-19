@@ -139,13 +139,13 @@ router.get('/bets', (req, res) => {
 });
 
 router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
-
     const { game } = req.params;
 
     con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
         if (!result.length) {
             var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
                 "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
+
             con.query(sql, function(err, result) {
                 if (err) throw (err);
 
