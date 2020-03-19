@@ -22,9 +22,44 @@
                 <p>
                     <%=balance %>
                 </p>
+                <table class="accountTable">
+                    <tr>
+                        <th>Bets</th>
+                    </tr>
+                    <td>
+                        lag1
+                    </td>
+                    <td>
+                        odds1
+                    </td>
+                    <td>
+                        odds2
+                    </td>
+                    <td>
+                        lag2
+                    </td>
+                    <td>
+                        <label for="stake">Stake</label>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <select class="1or2">
+                            <option value="match1">
+                                match ett
+                            </option>
+                            <option value="match2">
+                                match två
+                            </option>
+                        </select>
+                        <button>place</button>
+                        <button>delete</button>
+                    </td>
+                </table>
 
                 <p>
                     <%=Object.keys(data[0]) %>
+
+                        <p></p>
                         Här skriver vi ut alla bets denna user har "lagt" och som sen kan acceptera eller ta bort bet........................................................................................
                 </p>
 
