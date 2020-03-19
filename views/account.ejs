@@ -45,19 +45,19 @@
                             </td>
                             <td>
                                 <label for="stake">Stake</label>
-                                <input type="text">
+                                <input type="text" class="bet" value="0">
                             </td>
                             <td>
                                 <select class="selectTeam">
                             <option class="selectedBet" value="team one">
                                 <%=matchData[i].team1name; %>
                             </option>
-                            <option value="lag2">
+                            <option class="selectedBet" value="lag2">
                                 
                                 <%=matchData[i].team2name; %>
                             </option>
                         </select>
-                                <input type="button" value="place" onclick="placeBet()"></input>
+                                <input type="button" name="<%= i %>" value="place" onclick="placeBet()"></input>
                                 <button>delete</button>
                             </td>
 
@@ -68,12 +68,18 @@
 
                 </table>
 
-                <p>
-                    <%= betData[1].match_matchId%>
-                        <%= matchData[1].matchId%>
-                            <p></p>
-                            Här skriver vi ut alla bets denna user har "lagt" och som sen kan acceptera eller ta bort bet........................................................................................
+
+                <script>
+                    function placeBet() {
+                        var betTest = document.getElementsByClassName('bet');
+
+                    }
+                </script>
+
+                <p id="demo">
+
                 </p>
+
 
             </div>
         </div>
@@ -84,12 +90,5 @@
         </div>
     </div>
 
-    <script>
-        function placeBet() {
-            var x = document.getElementsByClassName(selectedBet).;
-
-
-        }
-    </script>
 
 </body>
