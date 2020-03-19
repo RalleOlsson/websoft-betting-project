@@ -13,10 +13,11 @@
         <img src="../img/logo.png" class="logo" alt="logo" width="350" height="150">
     </div>
 
-    <% if (messages.error) { %>
-        <%= messages.error %>
-            <% } %>
-                <div class="loginPage">
+
+    <div class="loginPage">
+        <% if (messages.error) { %>
+            <%= messages.error %>
+                <% } %>
                     <form class="loginLabel" action="/login" method="POST">
                         <div class="loginLabel">
                             <label for="email">Email</label>
@@ -39,5 +40,5 @@
 
                     </form>
 
-                </div>
+    </div>
 </body>
