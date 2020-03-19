@@ -16,6 +16,7 @@ const routeHome = require("./route/home.js");
 const routeLogin = require("./route/login.js");
 const routeApi = require("./route/api.js");
 const routeAccount = require("./route/account.js");
+const routeAdmin = require("./route/admin.js");
 
 app.set("view engine", "ejs");
 
@@ -25,6 +26,7 @@ app.use("/", routeLogin);
 app.use("/home", routeHome);
 app.use("/api", routeApi);
 app.use("/account", routeAccount);
+app.use("/admin", routeAdmin);
 
 app.listen(port, logStartUpDetailsToConsole);
 
