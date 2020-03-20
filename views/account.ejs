@@ -46,7 +46,7 @@
                                 </td>
                                 <td>
                                     <label for="stake">Stake</label>
-                                    <input type="text" class="bet" value="0">
+                                    <input type="text" class="bet" value="<%= betData[i].stake%>">
                                 </td>
                                 <td>
                                     <select class="selectTeam">
@@ -58,12 +58,11 @@
                                 <%=matchData[i].team2name; %>
                             </option>
                         </select>
-                                    <form class="accountForm" action="/account?_method=PUT" method="POST">
-                                        <input type="button" value="place" onclick="placeBet('<%= i %>', '<%= balance %>', '<%= JSON.stringify(betData) %>')"></input>
-                                    </form>
-                                    <form class="accountForm" method="POST" action="/account?_method=DELETE">
-                                        <button type="submit" onclick="deleteBet('<%= i %>')">delete</button>
-                                    </form>
+
+                                    <input type="button" value="place" onclick="placeBet('<%= i %>', '<%= balance %>', '<%= JSON.stringify(betData) %>')"></input>
+
+                                    <button type="submit" onclick="deleteBet('<%= i %>', '<%= JSON.stringify(betData) %>')">delete</button>
+
                                 </td>
                                 <td>
                                     <%=betData[i].betPlaced; %>
@@ -108,7 +107,7 @@
                                     })
 
                                 }).then(() => {
-                                    withdraw = 0 - value;
+                                    withdraw = 0 - (value - bets[i].stake);
                                     fetch('http://localhost:1337/api/user/' + bets[i].user_userId, {
                                         method: 'PUT',
                                         headers: {
@@ -123,17 +122,28 @@
                                     });
                                     alert("bet changed");
                                 });
-
-
                             }
                         }
+
+                        function deleteBet(i, betJson) {
+                            const bets = JSON.parse(betJson);
+                            console.log(bets[i].betId);
+                            fetch('http://localhost:1337/api/bets/' + bets[i].betId, {
+                                method: 'DELETE',
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    betId: bets[i].betId,
+                                    stake: bets[i].stake,
+                                    user_userId: bets[i].user_userId
+                                })
+                            }).then(() => {
+                                alert("deleted bet");
+                                location.reload();
+                            })
+                        }
                     </script>
-
-                    <p id="demo">
-
-                    </p>
-
-
             </div>
         </div>
     </div>

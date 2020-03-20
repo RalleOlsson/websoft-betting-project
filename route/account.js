@@ -46,12 +46,10 @@ router.get('/:userId(*)', checkAuthenticated, (req, res) => {
                         team1odds: data[0].team1odds,
                         team2odds: data[0].team2odds
                     }
-                    console.log("awaitF: ");
-                    console.log(matchData[i]);
+
                 });
             }
         }).then(() => {
-            console.log(matchData[0]);
             res.render("account", {
                 email: req.user.email,
                 userId: req.user.userId,

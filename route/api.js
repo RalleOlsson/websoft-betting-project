@@ -166,12 +166,28 @@ router.get('/bets/notFinished', (req, res) => {
 
 router.put('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
+
     console.log("status: " + req.body.status);
     var sql = "UPDATE bet SET status = '" + req.body.status + "', stake = " + req.body.stake + ", betPlaced = '" + req.body.betPlaced + "' WHERE betId = " + betId;
     console.log("sql: " + sql);
     con.query(sql, function(err, result) {
         res.json("Status changed to finished");
     });
+});
+
+router.delete('/bets/:betId(*)', (req, res) => {
+    const { betId } = req.params;
+
+    console.log("entered delete");
+    if (req.body.stake > 0) {
+        console.log("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId);
+        con.query("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId, function(err, result) {
+
+        });
+    }
+    con.query("DELETE FROM bet WHERE betId = " + betId, function(err, result) {
+        res.json("Deleted bet with betId: " + betId);
+    })
 });
 
 router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
