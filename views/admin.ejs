@@ -9,25 +9,28 @@
 </head>
 
 <body>
+
     <%- include('view/header'); -%>
-        <script>
-            function resolveBets() {
-                fetch('http://localhost:1337/admin', {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: {}
-                }).then((response) => {
-                    return response.json();
-                }).then((json) => {
-                    alert(json);
-                })
-            }
-        </script>
 
         <button onclick="resolveBets()">ResolveBets</button>
 
+        <%- include('view/footer'); -%>
+
+            <script>
+                function resolveBets() {
+                    fetch('http://localhost:1337/admin', {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: {}
+                    }).then((response) => {
+                        return response.json();
+                    }).then((json) => {
+                        alert(json);
+                    })
+                }
+            </script>
 </body>
 
 </HTML>

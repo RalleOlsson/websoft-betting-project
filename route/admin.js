@@ -13,6 +13,11 @@ router.get('/', checkAuthenticated, (req, res) => {
     });
 });
 
+/**
+ * This post resolves every bet that has a match with a winner.
+ * Adds the winnings to the users balance and
+ * marks all bets with a won match as finished
+ */
 router.post('/', checkAuthenticated, (req, res) => {
     var betsList = {};
     fetch('http://localhost:1337/api/bets/notFinished')
