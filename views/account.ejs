@@ -20,36 +20,36 @@
                     <%=email %>
                 </h2>
                 <p>
+                    Balance:
                     <%=balance %>
                 </p>
-                <%= Object.keys(betData[0]); %>
-                    <table class="accountTable" id="accTable">
-                        <tr>
-                            <td class="accountHead" colspan="7"> <b>Bets</b></td>
-                        </tr>
+                <table class="accountTable" id="accTable">
+                    <tr>
+                        <td class="accountHead" colspan="7"> <b>Bets</b></td>
+                    </tr>
 
-                        <%
+                    <%
                     for(var i = 0; i < matchData.length; i++){
                     %>
-                            <tr>
-                                <td>
-                                    <%=matchData[i].team1name; %>
-                                </td>
-                                <td>
-                                    <%=matchData[i].team1odds %>
-                                </td>
-                                <td>
-                                    <%=matchData[i].team2odds %>
-                                </td>
-                                <td>
-                                    <%=matchData[i].team2name %>
-                                </td>
-                                <td>
-                                    <label for="stake">Stake</label>
-                                    <input type="text" class="bet" value="<%= betData[i].stake%>">
-                                </td>
-                                <td>
-                                    <select class="selectTeam">
+                        <tr>
+                            <td>
+                                <%=matchData[i].team1name; %>
+                            </td>
+                            <td>
+                                <%=matchData[i].team1odds %>
+                            </td>
+                            <td>
+                                <%=matchData[i].team2odds %>
+                            </td>
+                            <td>
+                                <%=matchData[i].team2name %>
+                            </td>
+                            <td>
+                                <label for="stake">Stake</label>
+                                <input type="text" class="bet" value="<%= betData[i].stake%>">
+                            </td>
+                            <td>
+                                <select class="selectTeam">
                             <option class="selectedBet" value="<%=matchData[i].team1name; %>">
                                 <%=matchData[i].team1name; %>
                             </option>
@@ -59,91 +59,20 @@
                             </option>
                         </select>
 
-                                    <input type="button" value="place" onclick="placeBet('<%= i %>', '<%= balance %>', '<%= JSON.stringify(betData) %>')"></input>
+                                <input type="button" value="place" onclick="placeBet('<%= i %>', '<%= balance %>', '<%= JSON.stringify(betData) %>')"></input>
 
-                                    <button type="submit" onclick="deleteBet('<%= i %>', '<%= JSON.stringify(betData) %>')">delete</button>
+                                <button type="submit" onclick="deleteBet('<%= i %>', '<%= JSON.stringify(betData) %>')">delete</button>
 
-                                </td>
-                                <td>
-                                    <%=betData[i].betPlaced; %>
-                                </td>
-                            </tr>
-                            <%
+                            </td>
+                            <td>
+                                <%=betData[i].betPlaced; %>
+                            </td>
+                        </tr>
+                        <%
                 }
                     %>
 
-                    </table>
-
-
-                    <script>
-                        function placeBet(i, balance, betJson) {
-                            const bets = JSON.parse(betJson);
-                            console.log(betJson);
-                            console.log(bets[0].betId);
-
-                            var teamName = document.getElementsByClassName("selectTeam");
-                            var stake = document.getElementsByClassName("bet");
-
-                            var team = teamName[i].value;
-                            var value = parseInt(stake[i].value);
-                            if (value > balance) {
-                                alert("not enough dough");
-                            } else if (value <= balance) {
-                                console.log(team + value);
-
-                                fetch('http://localhost:1337/api/bets/' + bets[i].betId, {
-                                    method: 'PUT',
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    },
-                                    body: JSON.stringify({
-                                        betId: bets[i].betId,
-                                        user_userId: bets[i].user_userId,
-                                        match_matchId: bets[i].match_matchId,
-                                        stake: value,
-                                        status: 'active',
-                                        game: bets[i].game,
-                                        betPlaced: team
-                                    })
-
-                                }).then(() => {
-                                    withdraw = 0 - (value - bets[i].stake);
-                                    fetch('http://localhost:1337/api/user/' + bets[i].user_userId, {
-                                        method: 'PUT',
-                                        headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            payment: withdraw
-                                        })
-                                    }).then(() => {
-                                        alert("money withdraw, Page is now refreshing");
-                                        location.reload();
-                                    });
-                                    alert("bet changed");
-                                });
-                            }
-                        }
-
-                        function deleteBet(i, betJson) {
-                            const bets = JSON.parse(betJson);
-                            console.log(bets[i].betId);
-                            fetch('http://localhost:1337/api/bets/' + bets[i].betId, {
-                                method: 'DELETE',
-                                headers: {
-                                    "Content-Type": "application/json"
-                                },
-                                body: JSON.stringify({
-                                    betId: bets[i].betId,
-                                    stake: bets[i].stake,
-                                    user_userId: bets[i].user_userId
-                                })
-                            }).then(() => {
-                                alert("deleted bet");
-                                location.reload();
-                            })
-                        }
-                    </script>
+                </table>
             </div>
         </div>
     </div>
@@ -152,6 +81,8 @@
             <%- include('view/footer'); -%>
         </div>
     </div>
+
+    <script type="text/javascript" src="../js/betFunctions.js"></script>
 
 
 </body>

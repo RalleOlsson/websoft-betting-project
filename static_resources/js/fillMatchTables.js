@@ -3,7 +3,7 @@ function fillMatchTables(jsonData, game) {
 
     tabContent.innerHTML = "";
 
-    console.log(jsonData);
+    //console.log(jsonData);
 
     var currentDayRow = null;
     var day = null;
@@ -66,16 +66,12 @@ function fillMatchTables(jsonData, game) {
         const matchId = match.id;
         row.onclick = function() {
             var userId = document.getElementById("userId").innerText;
-            console.log(userId);
+
             var data = {
                 userId: userId,
                 matchId: matchId,
                 betPlaced: 'none'
             };
-
-            console.log(data.sql);
-
-            console.log(JSON.stringify(data));
 
             fetch('http://localhost:1337/api/bets/' + game.toLowerCase(), {
                     method: 'POST',
@@ -87,10 +83,8 @@ function fillMatchTables(jsonData, game) {
                 .then((response) => {
                     return response.json();
                 }).then((json) => {
-                    alert(json);
+                    alert(json + ", enter /accounts to change the amount and team");
                 });
-
-
         };
 
         const odd1 = odds1;

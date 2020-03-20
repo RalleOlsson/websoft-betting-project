@@ -46,7 +46,7 @@ router.post('/', checkAuthenticated, (req, res) => {
                                     }).then(async(multiplier) => {
                                         var data = {};
                                         var payment = betsList[i].stake * parseFloat(multiplier);
-                                        console.log(JSON.stringify({ payment: payment }));
+
                                         await fetch('http://localhost:1337/api/user/' + betsList[i].user_userId, {
                                             method: 'PUT',
                                             headers: {

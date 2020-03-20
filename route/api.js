@@ -167,9 +167,9 @@ router.get('/bets/notFinished', (req, res) => {
 router.put('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
 
-    console.log("status: " + req.body.status);
+
     var sql = "UPDATE bet SET status = '" + req.body.status + "', stake = " + req.body.stake + ", betPlaced = '" + req.body.betPlaced + "' WHERE betId = " + betId;
-    console.log("sql: " + sql);
+    //console.log("sql: " + sql);
     con.query(sql, function(err, result) {
         res.json("Status changed to finished");
     });
@@ -178,9 +178,8 @@ router.put('/bets/:betId(*)', (req, res) => {
 router.delete('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
 
-    console.log("entered delete");
     if (req.body.stake > 0) {
-        console.log("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId);
+        //console.log("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId);
         con.query("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId, function(err, result) {
 
         });
@@ -244,9 +243,8 @@ router.get('/odds/:matchId(*)', (req, res) => {
 router.put('/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
-    console.log("body: " + req.body.payment);
     var sql = "UPDATE user SET balance = balance + " + req.body.payment + " WHERE userId = " + "" + userId + "";
-    console.log("sql: " + sql);
+    //console.log("sql: " + sql);
     con.query(sql, function(err, result) {
         res.json("balance changed");
     });

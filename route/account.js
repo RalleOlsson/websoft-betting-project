@@ -61,23 +61,6 @@ router.get('/:userId(*)', checkAuthenticated, (req, res) => {
         });
 });
 
-router.put
-
-function fetchMatchData(jsonData) {
-    console.log(jsonData.length)
-    for (var i = 0; i < jsonData.length; i++) {
-        var bet = jsonData[i];
-
-        var url2 = 'http://localhost:1337/api/odds/' + bet.match_matchId;
-        fetch(url2).then((response) => {
-
-        });
-    }
-    console.log("fetchMatchData: ");
-    console.log(matchData.length);
-    return matchData;
-}
-
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
