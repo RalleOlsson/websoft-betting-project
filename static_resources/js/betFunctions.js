@@ -61,3 +61,19 @@ function deleteBet(i, betJson) {
         location.reload(true);
     })
 }
+
+function addFunds(money, userId) {
+
+    fetch('http://localhost:1337/api/user/' + userId, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            payment: money
+        })
+    }).then(() => {
+        alert("money added, Page is now refreshing");
+        location.reload();
+    });
+}

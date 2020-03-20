@@ -53,26 +53,27 @@ router.post('/', checkAuthenticated, (req, res) => {
                                                 "Content-Type": "application/json"
                                             },
                                             body: JSON.stringify({ payment: payment })
+                                        }).then(() => {
+                                            console.log("balance done");
                                         });
                                     });
-
-                                for (var n = 0; n < betsList.length; n++) {
-                                    var finishedBet = betsList[n];
-                                    finishedBet.status = 'finished';
-                                    await fetch('http://localhost:1337/api/bets/' + finishedBet.betId, {
-                                        method: 'PUT',
-                                        headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            status: finishedBet.status,
-                                            stake: finishedBet.stake
-                                        })
-
-                                    });
-                                }
-
                             }
+                        }
+                        for (var n = 0; n < betsList.length; n++) {
+                            var finishedBet = betsList[n];
+                            finishedBet.status = 'finished';
+                            await fetch('http://localhost:1337/api/bets/' + finishedBet.betId, {
+                                method: 'PUT',
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    status: finishedBet.status,
+                                    stake: finishedBet.stake
+                                })
+                            }).then(() => {
+                                console.log("bets done");
+                            });
                         }
                     });
             }
