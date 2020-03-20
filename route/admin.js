@@ -57,10 +57,8 @@ router.post('/', checkAuthenticated, (req, res) => {
                                             console.log("balance done");
                                         });
                                     });
-                            }
-                        }
-                        for (var n = 0; n < betsList.length; n++) {
-                            var finishedBet = betsList[n];
+                            } // end of match.winnerTeam.name === betsList[i].betPlaced
+                            var finishedBet = betsList[i];
                             finishedBet.status = 'finished';
                             await fetch('http://localhost:1337/api/bets/' + finishedBet.betId, {
                                 method: 'PUT',
@@ -69,14 +67,16 @@ router.post('/', checkAuthenticated, (req, res) => {
                                 },
                                 body: JSON.stringify({
                                     status: finishedBet.status,
-                                    stake: finishedBet.stake
+                                    stake: finishedBet.stake,
+                                    betPlaced: finishedBet.betPlaced
                                 })
                             }).then(() => {
                                 console.log("bets done");
                             });
-                        }
+                        } // end of typeof(match.winnerTeam) !== 'undefined'
                     });
             }
+            res.json("resolved bets");
         });
 });
 
