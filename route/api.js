@@ -143,13 +143,6 @@ router.get('/matches/ow', (req, res) => {
     res.json(data);
 });
 
-
-router.get('results/csgo', (req, res) => {
-    HLTV.getRe
-});
-
-
-
 router.get('/bets/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
@@ -163,12 +156,37 @@ router.get('/bets/user/:userId(*)', (req, res) => {
 
 router.get('/bets/notFinished', (req, res) => {
 
-    con.query("SELECT * FROM bet WHERE status != 'finished'", function(err, result) {
+    con.query("SELECT * FROM bet WHERE status = 'active'", function(err, result) {
 
         if (err) throw err;
 
         res.json(result);
     });
+});
+
+router.put('/bets/:betId(*)', (req, res) => {
+    const { betId } = req.params;
+    console.log("status: " + req.body.status);
+    con.query("UPDATE bet SET status = '" + req.body.status + "' WHERE betId = " + betId, function(err, result) {
+        res.json("Status changed to finished");
+    });
+});
+
+router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
+    const { game } = req.params;
+
+    con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
+        if (!result.length) {
+            var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
+                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
+
+            con.query(sql, function(err, result) {
+                if (err) throw (err);
+
+                res.json("bet was added");
+            });
+        }
+    })
 });
 
 router.get('/bets/:betId(*)', (req, res) => {
@@ -197,31 +215,6 @@ router.get('/bets', (req, res) => {
     });
 });
 
-router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
-    const { game } = req.params;
-
-    con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
-        if (!result.length) {
-            var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
-                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
-
-            con.query(sql, function(err, result) {
-                if (err) throw (err);
-
-                res.json("bet was added");
-            });
-        }
-    })
-
-    /*
-    con.query(req.body.sql, function(err, result) {
-        if (err) res.send(err);
-
-        res.json("bet was added");
-    });*/
-
-});
-
 router.get('/odds/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
 
@@ -229,6 +222,17 @@ router.get('/odds/:matchId(*)', (req, res) => {
         res.json(result);
     });
 });
+
+router.put('/user/:userId(*)', (req, res) => {
+    const { userId } = req.params;
+
+    console.log("body: " + req.body.payment);
+    var sql = "UPDATE user SET balance = balance + " + req.body.payment + " WHERE userId = " + "" + userId + "";
+    console.log("sql: " + sql);
+    con.query(sql, function(err, result) {
+        res.json("balance changed");
+    });
+})
 
 /** shows a hardcoded list of available commands */
 router.get('/', (req, res) => {

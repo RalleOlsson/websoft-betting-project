@@ -10,27 +10,9 @@
 
 <body>
     <%- include('view/header'); -%>
-        <script>
-            function resolveBets() {
-                var betsList = {};
-                fetch('http://localhost:1337/api/bets/notFinished').then((response) => {
-                    return response.json();
-                }).then(async(bets) => {
-                    betsList = bets;
-                    for (var i = 0; i < bets.length; i++) {
-                        await fetch('http://localhost:1337/api/matches/' + bets[i].match_matchId + "/" + bets[i].game)
-                            .then((response) => {
-                                return response.json();
-                            }).then((match) => {
-                                if (typeof(match.winnerTeam) !== 'undefined') {
-                                    betsList[i].
-                                }
-                            });
-                    }
-                });
-            }
-        </script>
-        <button onclick="resolveBets()"></button>
+        <form action="/admin" method="POST">
+            <button type="submit">ResolveBets</button>
+        </form>
 </body>
 
 </HTML>
