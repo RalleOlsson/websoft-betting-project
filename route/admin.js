@@ -65,7 +65,8 @@ router.post('/', checkAuthenticated, (req, res) => {
                                             "Content-Type": "application/json"
                                         },
                                         body: JSON.stringify({
-                                            status: finishedBet.status
+                                            status: finishedBet.status,
+                                            stake: finishedBet.stake
                                         })
 
                                     });

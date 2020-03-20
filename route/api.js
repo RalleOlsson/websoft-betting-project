@@ -167,7 +167,9 @@ router.get('/bets/notFinished', (req, res) => {
 router.put('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
     console.log("status: " + req.body.status);
-    con.query("UPDATE bet SET status = '" + req.body.status + "' WHERE betId = " + betId, function(err, result) {
+    var sql = "UPDATE bet SET status = '" + req.body.status + "', stake = " + req.body.stake + ", betPlaced = '" + req.body.betPlaced + "' WHERE betId = " + betId;
+    console.log("sql: " + sql);
+    con.query(sql, function(err, result) {
         res.json("Status changed to finished");
     });
 });
