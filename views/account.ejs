@@ -27,11 +27,40 @@
                         <tr>
                             <td class="accountHead" colspan="7"> <b>Bets</b></td>
                         </tr>
+                        <tr>
+                            <td>
+                                Team1
+                            </td>
 
+                            <td>
+                                Odds team 1
+                            </td>
+
+                            <td>
+                                Odds team 2
+                            </td>
+
+                            <td>
+                                Team2
+                            </td>
+
+                            <td>
+                                Amount
+                            </td>
+
+                            <td>
+                                Place bet on a team or delete bet
+                            </td>
+
+                            <td>
+                                Bet
+                            </td>
+                        </tr>
                         <%
                     for(var i = 0; i < matchData.length; i++){
                     %>
                             <tr>
+
                                 <td>
                                     <%=matchData[i].team1name; %>
                                 </td>
