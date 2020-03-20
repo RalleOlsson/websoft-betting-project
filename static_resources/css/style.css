@@ -525,3 +525,7 @@ span {
     padding-bottom: 12px;
     text-align: left;
 }
+
+.accountForm {
+    display: inline;
+}

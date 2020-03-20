@@ -25,7 +25,7 @@
                 <%= Object.keys(betData[0]); %>
                     <table class="accountTable" id="accTable">
                         <tr>
-                            <td class="accountHead" colspan="6"> <b>Bets</b></td>
+                            <td class="accountHead" colspan="7"> <b>Bets</b></td>
                         </tr>
 
                         <%
@@ -58,14 +58,16 @@
                                 <%=matchData[i].team2name; %>
                             </option>
                         </select>
-                                    <form action="/account?_method=PUT" method="POST">
+                                    <form class="accountForm" action="/account?_method=PUT" method="POST">
                                         <input type="button" value="place" onclick="placeBet('<%= i %>', '<%= balance %>', '<%= JSON.stringify(betData) %>')"></input>
                                     </form>
-                                    <form method="POST" action="/account?_method=DELETE">
+                                    <form class="accountForm" method="POST" action="/account?_method=DELETE">
                                         <button type="submit" onclick="deleteBet('<%= i %>')">delete</button>
                                     </form>
                                 </td>
-
+                                <td>
+                                    <%=betData[i].betPlaced; %>
+                                </td>
                             </tr>
                             <%
                 }
