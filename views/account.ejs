@@ -85,9 +85,11 @@
                                 <%=matchData[i].team2name; %>
                             </option>
                         </select>
-                                <input type="button" name="<%= i %>" value="place" onclick="placeBet('<%= i %>')"></input>¨
-                                <form method="POST" action="">
-                                    <button onclick="deleteBet('<%= i %>')">delete</button>
+                                <form action="/account?_method=PUT" method="POST">
+                                    <input type="button" name="<%= i %>" value="place" onclick="placeBet('<%= i %>')"></input>
+                                </form>
+                                <form method="DELETE" action="/account?_method=DELETE">
+                                    <button type="submit" onclick="deleteBet('<%= i %>')">delete</button>
                                 </form>
                             </td>
 
@@ -109,14 +111,11 @@
                             alert("not enough dough");
 
                         } else if (stake[i].value <= "<%=balance %>") {
-
-                            //balnce = balance - stake[i].value;
                             console.log(teamName[i].value + stake[i].value);
                         }
                     }
 
                     function deleteBet(i) {
-
 
                     }
                 </script>

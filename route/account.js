@@ -12,6 +12,17 @@ router.get('/', checkAuthenticated, (req, res) => {
     res.redirect('/account/' + req.user.userId);
 });
 
+
+router.put('/:userId(*)', checkAuthenticated, (req, res) => {
+
+
+})
+
+router.delete('/:userId(*)', checkAuthenticated, (req, res) => {
+
+
+})
+
 router.get('/:userId(*)', checkAuthenticated, (req, res) => {
     var matchData = [];
     var betData = [];
