@@ -94,11 +94,53 @@ router.get('/matches/csgo', (req, res) => {
                     eventList[index].matches.push(response[i]);
                 }
             }
-
         }
 
         res.json(eventList);
     });
+});
+
+router.get('/matches/ow', (req, res) => {
+    var data = [{
+            eventName: 'OW test event1',
+            matches: [{
+                    id: 1,
+                    date: 1584651600000,
+                    team1: { name: 'XQC' },
+                    team2: { name: 'Seagull' },
+                    live: false
+
+                },
+                {
+                    id: 2,
+                    team1: { name: 'Covid-19' },
+                    team2: { name: 'Vaccine' },
+                    date: 1584565200000,
+                    live: false
+                }
+            ]
+        },
+        {
+            eventName: 'OW test event2',
+            matches: [{
+                    id: 3,
+                    team1: { name: 'T1' },
+                    team2: { name: 'T2' },
+                    date: 1584565200000,
+                    live: false
+                },
+                {
+                    id: 4,
+                    team1: { name: 'T3' },
+                    team2: { name: 'T4' },
+                    date: 1584565200000,
+                    live: false
+                }
+            ]
+        }
+    ];
+
+    res.json(data);
 });
 
 router.get('/bets/user/:userId(*)', (req, res) => {
@@ -110,6 +152,41 @@ router.get('/bets/user/:userId(*)', (req, res) => {
 
         res.json(result);
     });
+});
+
+router.get('/bets/notFinished', (req, res) => {
+
+    con.query("SELECT * FROM bet WHERE status = 'active'", function(err, result) {
+
+        if (err) throw err;
+
+        res.json(result);
+    });
+});
+
+router.put('/bets/:betId(*)', (req, res) => {
+    const { betId } = req.params;
+    console.log("status: " + req.body.status);
+    con.query("UPDATE bet SET status = '" + req.body.status + "' WHERE betId = " + betId, function(err, result) {
+        res.json("Status changed to finished");
+    });
+});
+
+router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
+    const { game } = req.params;
+
+    con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
+        if (!result.length) {
+            var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
+                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
+
+            con.query(sql, function(err, result) {
+                if (err) throw (err);
+
+                res.json("bet was added");
+            });
+        }
+    })
 });
 
 router.get('/bets/:betId(*)', (req, res) => {
@@ -138,31 +215,6 @@ router.get('/bets', (req, res) => {
     });
 });
 
-router.post('/bets/:game(*)', checkAuthenticated, (req, res) => {
-    const { game } = req.params;
-
-    con.query("SELECT * from bet WHERE user_userId = " + req.body.userId + " AND match_matchId = " + req.body.matchId + " AND betPlaced = '" + req.body.betPlaced + "'", function(err, result) {
-        if (!result.length) {
-            var sql = "INSERT INTO bet (user_userId, match_matchId, stake, status, game, betPlaced) VALUES" +
-                "(" + req.body.userId + ', ' + req.body.matchId + ', ' + 0 + ', ' + "'standby', '" + game + "', " + "'" + req.body.betPlaced + "'" + ")";
-
-            con.query(sql, function(err, result) {
-                if (err) throw (err);
-
-                res.json("bet was added");
-            });
-        }
-    })
-
-    /*
-    con.query(req.body.sql, function(err, result) {
-        if (err) res.send(err);
-
-        res.json("bet was added");
-    });*/
-
-});
-
 router.get('/odds/:matchId(*)', (req, res) => {
     const { matchId } = req.params;
 
@@ -170,6 +222,17 @@ router.get('/odds/:matchId(*)', (req, res) => {
         res.json(result);
     });
 });
+
+router.put('/user/:userId(*)', (req, res) => {
+    const { userId } = req.params;
+
+    console.log("body: " + req.body.payment);
+    var sql = "UPDATE user SET balance = balance + " + req.body.payment + " WHERE userId = " + "" + userId + "";
+    console.log("sql: " + sql);
+    con.query(sql, function(err, result) {
+        res.json("balance changed");
+    });
+})
 
 /** shows a hardcoded list of available commands */
 router.get('/', (req, res) => {

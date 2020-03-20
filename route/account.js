@@ -52,6 +52,8 @@ router.get('/:userId(*)', checkAuthenticated, (req, res) => {
         });
 });
 
+router.put
+
 function fetchMatchData(jsonData) {
     console.log(jsonData.length)
     for (var i = 0; i < jsonData.length; i++) {
