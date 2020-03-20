@@ -34,46 +34,7 @@ function fillSidebar(game) {
         case 'OW':
             if (sidebarHeader.innerHTML != "OW") {
                 eventBar.innerHTML = "";
-
-                var data = [{
-                        eventName: 'OW test event1',
-                        matches: [{
-                                id: 1,
-                                date: 1584651600000,
-                                team1: { name: 'XQC' },
-                                team2: { name: 'Seagull' },
-                                live: false
-
-                            },
-                            {
-                                id: 2,
-                                team1: { name: 'Covid-19' },
-                                team2: { name: 'Vaccine' },
-                                date: 1584565200000,
-                                live: false
-                            }
-                        ]
-                    },
-                    {
-                        eventName: 'OW test event2',
-                        matches: [{
-                                id: 3,
-                                team1: { name: 'T1' },
-                                team2: { name: 'T2' },
-                                date: 1584565200000,
-                                live: false
-                            },
-                            {
-                                id: 4,
-                                team1: { name: 'T3' },
-                                team2: { name: 'T4' },
-                                date: 1584565200000,
-                                live: false
-                            }
-                        ]
-                    }
-                ];
-                addButtons(data, 'ow');
+                fetchEvents(game);
                 sidebarHeader.innerHTML = "OW";
                 break;
             }

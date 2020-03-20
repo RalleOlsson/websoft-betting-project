@@ -26,32 +26,24 @@
                     <tr>
                         <td class="accountHead" colspan="6"> <b>Bets</b></td>
                     </tr>
-
-                    <%
-                    for(var i = 0; i < matchData.length; i++){
-                    %>
-                        <td>
-                            <% matchData[i]; %>
-
-                        </td>
-                        <%
-                }
-                    %>
-                            <td>
-                                odds1
-                            </td>
-                            <td>
-                                odds2
-                            </td>
-                            <td>
-                                lag2
-                            </td>
-                            <td>
-                                <label for="stake">Stake</label>
-                                <input type="text">
-                            </td>
-                            <td>
-                                <select class="1or2">
+                    <td>
+                        lag1
+                    </td>
+                    <td>
+                        odds1
+                    </td>
+                    <td>
+                        odds2
+                    </td>
+                    <td>
+                        lag2
+                    </td>
+                    <td>
+                        <label for="stake">Stake</label>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <select class="1or2">
                             <option value="lag1">
                                 lag ett
                             </option>
@@ -59,14 +51,35 @@
                                 lag två
                             </option>
                         </select>
-                                <input type="button" value="place"></input>
-                                <button>delete</button>
+                        <input type="button" value="place">
+                        <button>delete</button>
+                    </td>
+
+                    <%
+                    for(var i = 0; i < matchData.length; i++){
+                    %>
+                        <tr>
+                            <td>
+                                <%= matchData[i].team1name %>
                             </td>
+                            <td>
+                                <%= matchData[i].team1odds %>
+                            </td>
+                            <td>
+                                <%= matchData[i].team2odds %>
+                            </td>
+                            <td>
+                                <%= matchData[i].team2name %>
+                            </td>
+                        </tr>
+                        <%
+                    }
+                    %>
                 </table>
 
                 <p>
-                    <%= betData[1].match_matchId%>
-                        <%= matchData[1].matchId%>
+                    <%= Object.keys(betData[1])%>
+                        <%= Object.keys(matchData[1])%>
                             <p></p>
                             Här skriver vi ut alla bets denna user har "lagt" och som sen kan acceptera eller ta bort bet........................................................................................
                 </p>

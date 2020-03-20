@@ -5,7 +5,11 @@ var router = express.Router();
 
 
 router.get('/', checkAuthenticated, (req, res) => {
-    res.send("hej");
+    res.render('admin', {
+        email: req.user.email,
+        userId: req.user.userId,
+        isAdmin: req.user.isAdmin
+    });
 });
 
 function checkAuthenticated(req, res, next) {
