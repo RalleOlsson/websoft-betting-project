@@ -108,8 +108,23 @@
                                     })
 
                                 }).then(() => {
+                                    withdraw = 0 - value;
+                                    fetch('http://localhost:1337/api/user/' + bets[i].user_userId, {
+                                        method: 'PUT',
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({
+                                            payment: withdraw
+                                        })
+                                    }).then(() => {
+                                        alert("money withdraw, Page is now refreshing");
+                                        location.reload();
+                                    });
                                     alert("bet changed");
                                 });
+
+
                             }
                         }
                     </script>
