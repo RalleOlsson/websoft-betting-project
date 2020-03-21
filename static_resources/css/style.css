@@ -382,6 +382,7 @@ Tabs for header
    */
 
 .aboutHeader {
+    text-align: center;
     border-radius: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
