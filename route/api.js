@@ -167,7 +167,6 @@ router.get('/bets/notFinished', (req, res) => {
 router.put('/bets/:betId(*)', checkAuthenticated, (req, res) => {
     const { betId } = req.params;
 
-
     var sql = "UPDATE bet SET status = '" + req.body.status + "', stake = " + req.body.stake + ", betPlaced = '" + req.body.betPlaced + "' WHERE betId = " + betId;
     //console.log("sql: " + sql);
     con.query(sql, function(err, result) {
@@ -178,6 +177,7 @@ router.put('/bets/:betId(*)', checkAuthenticated, (req, res) => {
 router.delete('/bets/:betId(*)', checkAuthenticated, (req, res) => {
     const { betId } = req.params;
 
+    // corrects the users balance
     if (req.body.stake > 0) {
         //console.log("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId);
         con.query("UPDATE user SET balance = balance + " + req.body.stake + " WHERE userId = " + req.body.user_userId, function(err, result) {

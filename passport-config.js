@@ -40,7 +40,7 @@ function initialize(passport) {
     passport.use(new localStrategy({ usernameField: 'email' }, authenticateUser));
     passport.serializeUser((user, done) => { done(null, user.userId) })
     passport.deserializeUser((id, done) => {
-        con.query("SELECT * FROM user WHERE userId = " + id, function(err, result) {
+        con.query("SELECT userId, email, balance, isAdmin FROM user WHERE userId = " + id, function(err, result) {
             return done(err, result[0]);
         })
     });

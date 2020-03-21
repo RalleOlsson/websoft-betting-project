@@ -1,5 +1,4 @@
 function fillSidebar(game) {
-
     var sidebarHeader = document.getElementById("sidebarHeader");
     var eventBar = document.getElementById("eventBar");
 
@@ -35,10 +34,9 @@ function fillSidebar(game) {
             if (sidebarHeader.innerHTML != "OW") {
                 eventBar.innerHTML = "";
                 fetchEvents(game);
-                sidebarHeader.innerHTML = "OW";
-                break;
             }
-
+            sidebarHeader.innerHTML = "OW";
+            break;
     }
 }
 
@@ -100,7 +98,6 @@ function fetchEvents(game) {
         console.log("loading from memory");
         addButtons(gamesData[game], game);
     }
-
 }
 
 function workInProgress() {
