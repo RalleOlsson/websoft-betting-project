@@ -48,7 +48,6 @@ body {
     color: var(--textColor);
     grid-template-columns: 50% auto;
     background-color: var(--backgroundPrimary);
-    min-height: 100%;
     column-gap: 10px;
     row-gap: 10px;
 }
