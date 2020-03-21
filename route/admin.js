@@ -6,11 +6,15 @@ var fetch = require('node-fetch');
 
 
 router.get('/', checkAuthenticated, (req, res) => {
-    res.render('admin', {
-        email: req.user.email,
-        userId: req.user.userId,
-        isAdmin: req.user.isAdmin
-    });
+    if (req.user.isAdmin == 1) {
+        res.render('admin', {
+            email: req.user.email,
+            userId: req.user.userId,
+            isAdmin: req.user.isAdmin
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 /**
