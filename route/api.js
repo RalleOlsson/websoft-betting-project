@@ -164,17 +164,18 @@ router.get('/bets/notFinished', (req, res) => {
     });
 });
 
-router.put('/bets/:betId(*)', checkAuthenticated, (req, res) => {
+router.put('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
-
+    console.log("för helvete");
     var sql = "UPDATE bet SET status = '" + req.body.status + "', stake = " + req.body.stake + ", betPlaced = '" + req.body.betPlaced + "' WHERE betId = " + betId;
-    //console.log("sql: " + sql);
+    console.log("sql: " + sql);
     con.query(sql, function(err, result) {
+        if (err) res.json(err);
         res.json("Status changed to finished");
     });
 });
 
-router.delete('/bets/:betId(*)', checkAuthenticated, (req, res) => {
+router.delete('/bets/:betId(*)', (req, res) => {
     const { betId } = req.params;
 
     // corrects the users balance
@@ -240,7 +241,7 @@ router.get('/odds/:matchId(*)', (req, res) => {
     });
 });
 
-router.put('/user/:userId(*)', checkAuthenticated, (req, res) => {
+router.put('/user/:userId(*)', (req, res) => {
     const { userId } = req.params;
 
     var sql = "UPDATE user SET balance = balance + " + req.body.payment + " WHERE userId = " + "" + userId + "";
