@@ -1,11 +1,13 @@
 function placeBet(i, balance, betJson) {
     const bets = JSON.parse(betJson);
-
+    balance = parseInt(balance);
     var teamName = document.getElementsByClassName("selectTeam");
     var stake = document.getElementsByClassName("bet");
 
     var team = teamName[i].value;
     var value = parseInt(stake[i].value);
+    console.log("value" + value);
+    console.log("total" + (balance + bets[i].stake));
     if (value > balance + bets[i].stake) {
         alert("not enough dough");
     } else if (value <= balance + bets[i].stake) {
