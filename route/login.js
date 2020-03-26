@@ -5,13 +5,13 @@
 
 var express = require('express');
 var router = express.Router();
+
 var bcrypt = require('bcrypt');
 var mysql = require('mysql');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const flash = require('express-flash');
 const session = require('express-session');
-
 const initializePassport = require('./../passport-config');
 initializePassport(passport);
 
@@ -33,8 +33,7 @@ router.get('/', checkAuthenticated, (req, res) => {
 });
 
 router.get('/login', checkNotAthenticated, (req, res) => {
-    var data = {};
-    res.render("login", data);
+    res.render("login");
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -44,8 +43,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 router.get('/register', checkNotAthenticated, (req, res) => {
-    var data = {};
-    res.render("register", data);
+    res.render("register");
 });
 
 router.post('/register', checkNotAthenticated, async(req, res) => {
@@ -92,7 +90,6 @@ function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-
     res.redirect('/login');
 }
 
@@ -101,7 +98,6 @@ function checkNotAthenticated(req, res, next) {
         return res.redirect('/');
     }
     next();
-
 }
 
 module.exports = router;

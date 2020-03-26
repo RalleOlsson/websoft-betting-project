@@ -40,7 +40,7 @@ function fillSidebar(game) {
     }
 }
 
-function addButtons(jsonData, game) {
+function addEventButtons(jsonData, game) {
     for (var i = 0; i < jsonData.length; i++) {
 
         var element = document.createElement("input");
@@ -90,13 +90,13 @@ function fetchEvents(game) {
                 return response.json();
             }).then((jsonData) => {
                 gamesData[game] = jsonData;
-                addButtons(gamesData[game], game);
+                addEventButtons(gamesData[game], game);
             });
     }
     /** if data is already loaded */
     else {
         console.log("loading from memory");
-        addButtons(gamesData[game], game);
+        addEventButtons(gamesData[game], game);
     }
 }
 
